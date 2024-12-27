@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="shortcut icon" href="favicon.ico" />
+    <style>
+        /* Réinitialisation des marges et des espacements par défaut */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Style de base pour le corps */
+        body {
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+            line-height: 1.6;
+            background-color: #121212; /* Gris très foncé */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        /* Style de l'en-tête et de la barre de navigation */
+        header {
+            background-color: #1e88e5; /* Bleu foncé */
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+        }
+
+        header h4 {
+            color: white;
+        }
+
+        header h4 a {
+            text-decoration: none;
+            color: white;
+        }
+
+        header h4 a:hover {
+            color: #1565c0; /* Bleu marine */
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            display: inline-block;
+            padding: 8px 12px;
+            background-color: #43a047; /* Vert sombre */
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+          background-color: #2e6931; /* Bleu foncé */
+        }
+
+        /* Section principale du contenu */
+        .planet-container {
+            background-color: #1c1c1c; /* Fond sombre */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        .planet-container h2 {
+            color: #1e88e5; /* Bleu foncé */
+        }
+
+        .planet-container a {
+            color: #1e88e5; /* Bleu foncé */
+            text-decoration: none;
+        }
+
+        .planet-container a:hover {
+            color: #1565c0; /* Bleu marine */
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #444444; /* Bordure sombre */
+            border-radius: 5px;
+            background-color: #2b2b2b; /* Gris moyen */
+            color: white;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #1e88e5; /* Bleu foncé */
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            background-color: #1565c0; /* Bleu marine */
+        }
+
+        iframe {
+            width: 100%;
+            height: 300px;
+            border: 2px solid #43a047; /* Vert sombre */
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: #1e88e5; /* Bleu foncé */
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h4><a href="index.html">Contact</a></h4>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="#">Test</a></li>
+                <li><a href="#">À propos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <div class="planet-container">
+            <h2>Contactez-moi</h2>
+            <address>
+                <a href="mailto:yanisboukayouh@gmail.com">yanisboukayouh@gmail.com</a><br />
+                <a href="tel:0766362667">07 66 36 26 67</a>
+            </address>
+        </div>
+    </section>
+
+    <section>
+        <div class="planet-container">
+            <h2>Localisation</h2>
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.557772098186!2d2.5742691156751645!3d48.841205979286336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e61b680b5b1fb3%3A0x22f5f62b92d87738!2sUniversit%C3%A9%20Gustave%20Eiffel!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+    </section>
+
+    <section>
+        <div class="planet-container">
+            <h2>Formulaire de contact</h2>
+            <form>
+                <label for="nom">Nom :</label>
+                <input type="text" id="nom" name="nom" required>
+                <label for="prenom">Prénom :</label>
+                <input type="text" id="prenom" name="prenom" required>
+                <label for="telephone">Téléphone :</label>
+                <input type="text" id="telephone" name="telephone" required>
+                <label for="commentaires">Message :</label>
+                <textarea id="commentaires" name="commentaires" rows="5" required></textarea>
+                <input type="reset" value="Effacer">
+                <input type="submit" value="Envoyer">
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; tayoken_ytd</p>
+    </footer>
+</body>
+</html>
