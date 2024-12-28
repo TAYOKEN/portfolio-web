@@ -55,8 +55,9 @@
         }
 
         nav ul li {
-            margin: 0 10px;
-        }
+  margin: 0 10px;
+  position: relative; /* Nécessaire pour le positionnement du sous-menu */
+}
 
         nav ul li a {
             display: inline-block;
@@ -145,26 +146,60 @@
             margin-top: 20px;
             border-radius: 5px;
         }
+
+        .sous-menu {
+  display: none; /* Cacher le sous-menu par défaut */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #43a047;
+  padding: 10px 0;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.sous-menu li {
+  width: 200px;
+  padding: 5px 10px;
+}
+
+.sous-menu li a {
+  padding: 8px 12px;
+  background-color: #43a047;
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+.sous-menu li a:hover {
+  background-color: #2e6931;
+}
+
+/* Afficher le sous-menu au survol du parent */
+nav ul li:hover .sous-menu {
+  display: block;
+}
     </style>
 </head>
 <body>
     <header>
-    <h4><a href="index.html">tayoken_ytd</a></h4>
-    <nav>
-      <ul>
-        <li><a href="index.html">Accueil</a></li>
-        <li>
-          <a href="projets.html">Projets</a>
-          <ul class="sous-menu">
-            <li><a href="projet1.html">Projet de cours</a></li>
-            <li><a href="projet2.html">Projet personnels</a></li>
+        <h4><a href="index.html">tayoken_ytd</a></h4>
+        <nav>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li>
+              <a href="projet1.html">Projets</a>
+              <ul class="sous-menu">
+                <li><a href="projet1.html">Projet de cours</a></li>
+                <li><a href="projet2.html">Projet personnels</a></li>
+              </ul>
+            </li>
+            <li><a href="mention_legales.html">Mention legales</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
-        </li>
-        <li><a href="mention_legales.html">Mention legales</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+        </nav>
+      </header>
+    
 
     <section>
         <div class="planet-container">
@@ -204,9 +239,9 @@
             </form>
         </div>
     </section>
-
+</main>
     <footer>
-    <p>&copy; Yanis BOUKAYOUH</p>
-  </footer>
+        <p>&copy; tayoken_ytd</p>
+    </footer>
 </body>
 </html>
