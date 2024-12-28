@@ -6,28 +6,24 @@
     <title>Contact</title>
     <link rel="shortcut icon" href="favicon.ico" />
     <style>
-        /* Réinitialisation des marges et des espacements par défaut */
+        /* Styles existants */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
-        /* Style de base pour le corps */
         body {
             font-family: Arial, sans-serif;
             color: #ffffff;
             line-height: 1.6;
-            background-color: #121212; /* Gris très foncé */
+            background-color: #121212;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             padding: 20px;
         }
-
-        /* Style de l'en-tête et de la barre de navigation */
         header {
-            background-color: #1e88e5; /* Bleu foncé */
+            background-color: #1e88e5;
             color: white;
             padding: 10px 20px;
             display: flex;
@@ -35,171 +31,140 @@
             align-items: center;
             border-radius: 5px;
         }
-
-        header h4 {
-            color: white;
-        }
-
         header h4 a {
             text-decoration: none;
             color: white;
         }
-
         header h4 a:hover {
-            color: #1565c0; /* Bleu marine */
+            color: #1565c0;
         }
-
         nav ul {
             list-style-type: none;
             display: flex;
         }
-
         nav ul li {
-  margin: 0 10px;
-  position: relative; /* Nécessaire pour le positionnement du sous-menu */
-}
-
+            margin: 0 10px;
+            position: relative;
+        }
         nav ul li a {
             display: inline-block;
             padding: 8px 12px;
-            background-color: #43a047; /* Vert sombre */
+            background-color: #43a047;
             color: white;
             text-decoration: none;
             font-weight: bold;
             border-radius: 5px;
             transition: background-color 0.3s ease;
         }
-
         nav ul li a:hover {
-          background-color: #2e6931; /* Bleu foncé */
+            background-color: #2e6931;
         }
-
-        /* Section principale du contenu */
+        .sous-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #43a047;
+            padding: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .sous-menu li {
+            width: 200px;
+            padding: 5px 10px;
+        }
+        .sous-menu li a {
+            padding: 8px 12px;
+            background-color: #43a047;
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+        .sous-menu li a:hover {
+            background-color: #2e6931;
+        }
+        nav ul li:hover .sous-menu {
+            display: block;
+        }
         .planet-container {
-            background-color: #1c1c1c; /* Fond sombre */
+            background-color: #1c1c1c;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
             margin: 20px auto;
             max-width: 600px;
         }
-
         .planet-container h2 {
-            color: #1e88e5; /* Bleu foncé */
+            color: #1e88e5;
         }
-
         .planet-container a {
-            color: #1e88e5; /* Bleu foncé */
+            color: #1e88e5;
             text-decoration: none;
         }
-
         .planet-container a:hover {
-            color: #1565c0; /* Bleu marine */
+            color: #1565c0;
         }
-
         label {
             display: block;
             margin: 10px 0 5px;
             font-weight: bold;
         }
-
-        input[type="text"],
-        textarea {
+        input[type="text"], input[type="email"], textarea {
             width: 100%;
             padding: 10px;
             margin-bottom: 20px;
-            border: 1px solid #444444; /* Bordure sombre */
+            border: 1px solid #444444;
             border-radius: 5px;
-            background-color: #2b2b2b; /* Gris moyen */
+            background-color: #2b2b2b;
             color: white;
         }
-
-        input[type="submit"],
-        input[type="reset"] {
+        input[type="submit"], input[type="reset"] {
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
-            background-color: #1e88e5; /* Bleu foncé */
+            background-color: #1e88e5;
             color: white;
             font-weight: bold;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
-
-        input[type="submit"]:hover,
-        input[type="reset"]:hover {
-            background-color: #1565c0; /* Bleu marine */
+        input[type="submit"]:hover, input[type="reset"]:hover {
+            background-color: #1565c0;
         }
-
         iframe {
             width: 100%;
             height: 300px;
-            border: 2px solid #43a047; /* Vert sombre */
+            border: 2px solid #43a047;
             border-radius: 5px;
         }
-
         footer {
-            background-color: #1e88e5; /* Bleu foncé */
+            background-color: #1e88e5;
             color: white;
             text-align: center;
             padding: 20px;
             margin-top: 20px;
             border-radius: 5px;
         }
-
-        .sous-menu {
-  display: none; /* Cacher le sous-menu par défaut */
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #43a047;
-  padding: 10px 0;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.sous-menu li {
-  width: 200px;
-  padding: 5px 10px;
-}
-
-.sous-menu li a {
-  padding: 8px 12px;
-  background-color: #43a047;
-  color: white;
-  text-decoration: none;
-  display: block;
-}
-
-.sous-menu li a:hover {
-  background-color: #2e6931;
-}
-
-/* Afficher le sous-menu au survol du parent */
-nav ul li:hover .sous-menu {
-  display: block;
-}
     </style>
 </head>
 <body>
     <header>
         <h4><a href="index.html">tayoken_ytd</a></h4>
         <nav>
-          <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li>
-              <a href="projet1.html">Projets</a>
-              <ul class="sous-menu">
-                <li><a href="projet1.html">Projet de cours</a></li>
-                <li><a href="projet2.html">Projet personnels</a></li>
-              </ul>
-            </li>
-            <li><a href="mention_legales.html">Mention legales</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li>
+                    <a href="projet1.html">Projets</a>
+                    <ul class="sous-menu">
+                        <li><a href="projet1.html">Projet de cours</a></li>
+                        <li><a href="projet2.html">Projets personnels</a></li>
+                    </ul>
+                </li>
+                <li><a href="mention_legales.html">Mention légales</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
         </nav>
-      </header>
-    
+    </header>
 
     <section>
         <div class="planet-container">
@@ -221,27 +186,53 @@ nav ul li:hover .sous-menu {
             </iframe>
         </div>
     </section>
+<section>
+    <div class="planet-container">
+        <h1>Formulaire de contact</h1>
+        <form id="form">
+            <div class="field">
+                <label for="to_name">Objet</label>
+                <input type="text" name="to_name" id="to_name" required>
+            </div>
+            <div class="field">
+                <label for="from_name">Votre Nom</label>
+                <input type="text" name="from_name" id="from_name" required>
+            </div>
+            <div class="field">
+                <label for="message">Message</label>
+                <input type="text" name="message" id="message" required>
+            </div>
+            <div class="field">
+                <label for="reply_to">Votre Email</label>
+                <input type="email" name="reply_to" id="reply_to" required>
+            </div>
+            <input type="submit" id="button" value="Envoyer">
+        </form>
+    </div>
+</section>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        emailjs.init('bABQu2nXMjxmzdl1F'); // Replace with your EmailJS User ID
 
-    <section>
-        <div class="planet-container">
-            <h2>Formulaire de contact</h2>
-            <form>
-                <label for="nom">Nom :</label>
-                <input type="text" id="nom" name="nom" required>
-                <label for="prenom">Prénom :</label>
-                <input type="text" id="prenom" name="prenom" required>
-                <label for="telephone">Téléphone :</label>
-                <input type="text" id="telephone" name="telephone" required>
-                <label for="commentaires">Message :</label>
-                <textarea id="commentaires" name="commentaires" rows="5" required></textarea>
-                <input type="reset" value="Effacer">
-                <input type="submit" value="Envoyer">
-            </form>
-        </div>
-    </section>
-</main>
-    <footer>
-        <p>&copy; Yanis BOUKAYOUH</p>
-    </footer>
+        const btn = document.getElementById('button');
+
+        document.getElementById('form')
+            .addEventListener('submit', function(event) {
+                event.preventDefault();
+                btn.value = 'Envoi...';
+
+                const serviceID = 'default_service';
+                const templateID = 'template_0dzi4ij';
+
+                emailjs.sendForm(serviceID, templateID, this)
+                    .then(() => {
+                        btn.value = 'Envoyer';
+                        alert('Message envoyé avec succès');
+                    }, (err) => {
+                        btn.value = 'Envoyer';
+                        alert('Erreur: ' + JSON.stringify(err));
+                    });
+            });
+    </script>
 </body>
 </html>
