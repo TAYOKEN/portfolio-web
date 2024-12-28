@@ -8,17 +8,31 @@ body {
   font-family: 'Roboto', sans-serif;
   color: #ffffff;
   line-height: 1.6;
-  background-color: #121212;
+  background: linear-gradient(135deg, #121212, #1c1c1c 50%, #0d47a1);
+  background-size: 400% 400%;
+  animation: backgroundMove 10s ease infinite;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
+  animation: fadeIn 1.2s ease-in-out;
+}
+@keyframes backgroundMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 header {
-  background-color: #1e88e5;
+  background: linear-gradient(90deg, #1e88e5, #1565c0);
   color: white;
   padding: 10px 20px;
   width: 100%;
@@ -26,11 +40,18 @@ header {
   justify-content: space-between;
   align-items: center;
   border-radius: 5px;
+  box-sizing: border-box;
+  animation: slideInFromTop 1s ease-out;
 }
 
 header h4 a {
   text-decoration: none;
   color: white;
+  transition: color 0.3s ease;
+}
+
+header:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
 }
 
 header h4 a:hover {
@@ -40,11 +61,14 @@ header h4 a:hover {
 nav ul {
   list-style-type: none;
   display: flex;
+  padding: 0;
+  margin: 0;
+  animation: fadeIn 1.2s ease-out;
 }
 
 nav ul li {
   margin: 0 10px;
-  position: relative; /* Nécessaire pour le positionnement du sous-menu */
+  position: relative;
 }
 
 nav ul li a {
@@ -55,16 +79,18 @@ nav ul li a {
   text-decoration: none;
   font-weight: bold;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 nav ul li a:hover {
   background-color: #2e6931;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
 }
 
-/* Styles pour le sous-menu */
 .sous-menu {
-  display: none; /* Cacher le sous-menu par défaut */
+  display: none;
   position: absolute;
   top: 100%;
   left: 0;
@@ -72,6 +98,8 @@ nav ul li a:hover {
   padding: 10px 0;
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  animation: fadeIn 0.3s ease-out forwards;
 }
 
 .sous-menu li {
@@ -91,11 +119,9 @@ nav ul li a:hover {
   background-color: #2e6931;
 }
 
-/* Afficher le sous-menu au survol du parent */
 nav ul li:hover .sous-menu {
   display: block;
 }
-
 
 .main-content {
   padding: 50px;
@@ -105,6 +131,7 @@ nav ul li:hover .sous-menu {
   justify-content: center;
   align-items: center;
   width: 100%;
+  animation: fadeIn 1s ease-out;
 }
 
 .photodep-container {
@@ -116,22 +143,24 @@ nav ul li:hover .sous-menu {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
 }
 
 .photodep-container img {
   max-height: 300px;
   max-width: auto;
-  border-radius: 5px; 
-  margin-bottom: 15px; 
-  margin-right: 10px; 
-  transition: transform 0.5s ease-in-out, filter 0.3s ease; 
+  border-radius: 5px;
+  margin-bottom: 15px;
+  margin-right: 10px;
+  transition: transform 0.5s ease-in-out, filter 0.3s ease;
 }
 
-/* Effet au survol */
 .photodep-container img:hover {
-  transform: scale(1.1); 
+  transform: scale(1.1);
   filter: brightness(1.2);
 }
+
 .mini-logos {
   display: flex;
   justify-content: center;
@@ -162,6 +191,8 @@ nav ul li:hover .sous-menu {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   display: inline-block;
   text-align: left;
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
 }
 
 .description-container h1 {
@@ -183,6 +214,7 @@ footer {
   width: 100%;
   margin-top: 20px;
   border-radius: 5px;
+  animation: fadeIn 1.2s ease-out;
 }
 
 .competence-container {
@@ -234,13 +266,31 @@ section {
   border-radius: 5px;
   margin-bottom: 15px;
   margin-top: 10px;
-  transition: transform 0.5s ease-in-out, filter 0.3s ease; 
-
+  transition: transform 0.5s ease-in-out, filter 0.3s ease;
 }
 
 .Projet-container img:hover {
-  transform: scale(1.1); 
+  transform: scale(1.1);
   filter: brightness(1.2);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
 /* Styles responsives pour les mobiles */
@@ -272,17 +322,18 @@ section {
   }
 
   .main-content {
-    flex-direction: row; /* Horizontal */
-    justify-content: flex-start;
-    overflow-x: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
   }
 
   .photodep-container,
   .description-container,
   .Projet-container {
-    flex: 0 0 auto; /* Ne pas réduire */
-    margin: 0 10px; /* Espacement horizontal */
-    width: 80%; /* Largeur réduite pour un effet slider */
+    flex: 0 0 auto;
+    margin: 10px 0; /* Espacement vertical */
+    width: 90%; /* Largeur ajustée */
   }
 
   footer {
@@ -292,6 +343,6 @@ section {
 
   /* Masquer les sous-menus en mobile */
   nav ul li .sous-menu {
-    display: none !important; /* Forcer la dissimulation des sous-menus */
+    display: none !important;
   }
 }
