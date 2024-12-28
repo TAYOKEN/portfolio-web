@@ -289,4 +289,9 @@ section {
     text-align: center;
     padding: 15px;
   }
+
+  /* Masquer les sous-menus en mobile */
+  nav ul li .sous-menu {
+    display: none !important; /* Forcer la dissimulation des sous-menus */
+  }
 }
