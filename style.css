@@ -145,6 +145,7 @@ nav ul li:hover .sous-menu {
   text-align: center;
   opacity: 0;
   animation: fadeIn 1s ease-out forwards;
+  position: relative;
 }
 
 .photodep-container img {
@@ -304,10 +305,6 @@ section {
     gap: 10px;
   }
 
-  nav ul {
-    display: none; /* Cacher le menu par défaut */
-  }
-
   .menu-toggle {
     display: inline-block;
     cursor: pointer;
@@ -344,5 +341,6 @@ section {
   /* Masquer les sous-menus en mobile */
   nav ul li .sous-menu {
     display: none !important;
+    
   }
 }
