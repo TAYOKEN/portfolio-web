@@ -1,1122 +1,771 @@
 <!DOCTYPE html>
-<html lang="fr"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<html lang="fr">
+<head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <link rel="shortcut icon" href="https://tayoken.xyz/yanisboukayouh/favicon.ico">
-    <link rel="preconnect" href="https://fonts.googleapis.com/">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-    <link href="Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/css2.css" rel="stylesheet">
-    <title>Yanis BOUKAYOUH - Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAYOKEN - Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        :root {
-            --primary: #2A2A2A;
-            --secondary: #00B4D8;
-            --accent: #FF6B6B;
-            --light: #F8F9FA;
-            --dark: #212529;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --accent-color: #f59e0b;
+            --bg-dark: #0f0f23;
+            --bg-darker: #0a0a1a;
+            --text-light: #e2e8f0;
+            --text-muted: #94a3b8;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
             line-height: 1.6;
-            color: var(--dark);
-            background-color: var(--light);
             overflow-x: hidden;
         }
 
-        /* Animations */
-        .hidden {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        /* Animated background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(45deg, var(--bg-dark), var(--bg-darker));
         }
 
-        .visible {
-            opacity: 1;
-            transform: translateY(0);
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
         }
 
-        .delay-1 { transition-delay: 0.2s; }
-        .delay-2 { transition-delay: 0.4s; }
-        .delay-3 { transition-delay: 0.6s; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(1deg); }
+            66% { transform: translateY(10px) rotate(-1deg); }
+        }
 
         /* Header */
         header {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            padding: 1rem 5%;
             position: fixed;
-            width: 100%;
             top: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            background: rgba(15, 15, 35, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
             z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        header a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-
-        /* Navigation Mobile */
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
+        .logo {
             font-size: 1.5rem;
-            cursor: pointer;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        nav ul {
+        .nav-links {
             display: flex;
             gap: 2rem;
             list-style: none;
         }
 
-        nav a {
-            color: var(--primary);
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
             transition: color 0.3s ease;
-            padding: 0.5rem;
+            position: relative;
         }
 
-        nav a:hover {
-            color: var(--secondary);
+        .nav-links a:hover {
+            color: var(--primary-color);
         }
 
-        /* Contenu principal */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Main content */
         main {
             margin-top: 80px;
-            padding: 0 5%;
         }
 
-        .hero-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-            min-height: calc(100vh - 80px);
-            padding: 2rem 0;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
 
-        .description-container h1 {
-            font-size: clamp(2rem, 5vw, 3rem);
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-            line-height: 1.2;
-        }
-
-        .description-container p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #666;
-            max-width: 600px;
-        }
-
-                .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .modal-content {
-            background-color: white;
-            padding: 20px;
-            border-radius: 5px;
-            max-width: 500px;
-            width: 80%;
-        }
-        
-        .close-btn {
-            float: right;
-            cursor: pointer;
-            font-size: 20px;
-        }
-
-        /* Section Profil */
-        .photodep-container {
-            position: relative;
+        /* Hero section */
+        .hero {
+            padding: 6rem 0;
             text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
             margin: 0 auto;
         }
 
-        .photodep-container img {
-            width: min(100%, 300px);
-            height: auto;
-            aspect-ratio: 1/1;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease;
         }
 
-        .mini-logos {
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero .description {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .cta-buttons {
             display: flex;
+            gap: 1rem;
             justify-content: center;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.6s both;
         }
 
-        .mini-logos img {
-            width: 40px;
-            height: 40px;
-            transition: transform 0.3s ease;
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .mini-logos img:hover {
-            transform: translateY(-5px);
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
         }
 
-        /* Sections Projets */
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary-color);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        /* Projects section */
+        .projects {
+            padding: 6rem 0;
+        }
+
         .section-title {
             text-align: center;
-            margin: 4rem 0 3rem;
-            font-size: clamp(1.8rem, 4vw, 2.2rem);
-            color: var(--primary);
-            position: relative;
+            margin-bottom: 4rem;
         }
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: var(--secondary);
+        .section-title h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
         }
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
-            padding: 1rem 0;
+            margin-top: 4rem;
         }
 
         .project-card {
-            background: white;
-            border-radius: 15px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: transform 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .project-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-        }
-
-        .project-card h3 {
-            margin: 1rem 0;
-            color: var(--primary);
-            font-size: 1.2rem;
-        }
-
-        .project-card p {
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        /* Vidéo Responsive */
-        .video-wrapper {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
             position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            border-radius: 15px;
             overflow: hidden;
         }
 
-        .video-wrapper iframe {
+        .project-card::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            border: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .project-info h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .project-lang {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        .project-description {
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            padding: 0.5rem 1rem;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 8px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-link:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Contact section */
+        .contact {
+            padding: 6rem 0;
+            background: var(--bg-darker);
+        }
+
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            border-color: var(--primary-color);
+            background: rgba(99, 102, 241, 0.1);
+            transform: translateY(-2px);
         }
 
         /* Footer */
         footer {
-            background: var(--primary);
-            color: white;
+            padding: 2rem 0;
             text-align: center;
-            padding: 2rem 5%;
-            margin-top: 4rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
         }
 
-        footer a {
-            color: var(--secondary);
-            text-decoration: none;
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        /* Responsive Mobile */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
+            .hero h1 {
+                font-size: 2.5rem;
             }
-
-            nav ul {
+            
+            .nav-links {
                 display: none;
-                position: fixed;
-                top: 60px;
-                right: 0;
-                background: white;
-                width: 100%;
-                padding: 1rem;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-                text-align: center;
             }
-
-            nav.active ul {
-                display: block;
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
             }
-
-            .hero-section {
+            
+            .projects-grid {
                 grid-template-columns: 1fr;
-                text-align: center;
-                padding: 2rem 0;
-                min-height: auto;
             }
-
-            .description-container p {
-                font-size: 1rem;
-            }
-
-            .project-card img {
-                height: 180px;
+            
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
             }
         }
-
-        @media (max-width: 480px) {
-            .project-card {
-                margin: 0 0.5rem;
-            }
-
-            .mini-logos {
-                gap: 1rem;
-            }
-        }
-        .skills-section {
-        margin: 5rem 0;
-        padding: 0 1rem;
-    }
-    
-    .skills-carousel {
-        position: relative;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 40px;
-    }
-    
-    .carousel-container {
-        overflow: hidden;
-        padding: 20px 0;
-    }
-    
-    .carousel-track {
-        display: flex;
-        gap: 20px;
-        transition: transform 0.5s ease;
-    }
-    
-    .skill-card {
-        min-width: 180px;
-        flex: 0 0 auto;
-        background: white;
-        border-radius: 12px;
-        padding: 1.5rem;
-        text-align: center;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .skill-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-    }
-    
-    .skill-card img {
-        width: 60px;
-        height: 60px;
-        margin-bottom: 1rem;
-    }
-    
-    .skill-card h3 {
-        font-size: 1.1rem;
-        margin-bottom: 0.8rem;
-        color: var(--primary);
-    }
-    
-    .skill-level {
-        height: 8px;
-        background: #e9ecef;
-        border-radius: 4px;
-        overflow: hidden;
-    }
-    
-    .level-bar {
-        height: 100%;
-        background: var(--secondary);
-        border-radius: 4px;
-    }
-    
-    .carousel-btn {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background: white;
-        border: none;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        font-size: 1.2rem;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s ease;
-        z-index: 10;
-    }
-    
-    .carousel-btn:hover {
-        background: var(--secondary);
-        color: white;
-    }
-    
-    .prev-btn {
-        left: -5px;
-    }
-    
-    .next-btn {
-        right: -5px;
-    }
-    
-    @media (max-width: 768px) {
-        .carousel-track {
-            gap: 15px;
-        }
-        
-        .skill-card {
-            min-width: 150px;
-            padding: 1.2rem;
-        }
-        
-        .skill-card img {
-            width: 50px;
-            height: 50px;
-        }
-    }
-    
-    @media (max-width: 480px) {
-        .skills-carousel {
-            padding: 0 30px;
-        }
-        
-        .skill-card {
-            min-width: 130px;
-            padding: 1rem;
-        }
-        
-        .skill-card img {
-            width: 40px;
-            height: 40px;
-        }
-    }
-      /* Section Parcours & Langues */
-      .education-languages-section {
-        margin: 5rem 0;
-        padding: 0 1rem;
-    }
-    
-    .education-languages-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-    
-    .subsection-title {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        margin-bottom: 1.5rem;
-        font-size: 1.4rem;
-        color: var(--primary);
-    }
-    
-    .section-icon {
-        width: 28px;
-        height: 28px;
-    }
-    
-    /* Timeline pour le parcours scolaire */
-    .timeline {
-        position: relative;
-        padding-left: 30px;
-    }
-    
-    .timeline::before {
-        content: '';
-        position: absolute;
-        left: 7px;
-        top: 0;
-        height: 100%;
-        width: 2px;
-        background: var(--secondary);
-    }
-    
-    .timeline-item {
-        position: relative;
-        margin-bottom: 2rem;
-    }
-    
-    .timeline-dot {
-        position: absolute;
-        left: -30px;
-        top: 5px;
-        width: 16px;
-        height: 16px;
-        border-radius: 50%;
-        background: var(--secondary);
-        border: 3px solid white;
-        box-shadow: 0 0 0 1px var(--secondary);
-    }
-    
-    .timeline-date {
-        font-size: 0.9rem;
-        font-weight: 500;
-        color: var(--secondary);
-        margin-bottom: 0.3rem;
-    }
-    
-    .timeline-content {
-        background: white;
-        padding: 1.2rem;
-        border-radius: 10px;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-    }
-    
-    .timeline-content h4 {
-        font-size: 1.1rem;
-        margin-bottom: 0.5rem;
-        color: var(--primary);
-    }
-    
-    .timeline-content p {
-        font-size: 0.95rem;
-        color: #666;
-        line-height: 1.5;
-    }
-    
-    /* Langues parlées */
-    .languages-list {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-    
-    .language-item {
-        display: flex;
-        align-items: center;
-        background: white;
-        padding: 1.2rem;
-        border-radius: 10px;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-    }
-    
-    .flag-icon {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        margin-right: 1rem;
-        object-fit: cover;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    
-    .language-info {
-        flex: 1;
-    }
-    
-    .language-info h4 {
-        font-size: 1.1rem;
-        margin-bottom: 0.5rem;
-        color: var(--primary);
-    }
-    
-    .language-level {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    
-    .level-dots {
-        display: flex;
-        gap: 5px;
-    }
-    
-    .dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background: #e9ecef;
-    }
-    
-    .dot.active {
-        background: var(--secondary);
-    }
-    
-    .level-text {
-        font-size: 0.85rem;
-        color: #666;
-    }
-    
-    /* Responsive */
-    @media (max-width: 768px) {
-        .education-languages-container {
-            grid-template-columns: 1fr;
-        }
-        
-        .languages-container {
-            margin-top: 2rem;
-        }
-    }
-
-    /* Améliorations CSS pour les modals - ajoutez ou remplacez dans votre CSS */
-
-.modal-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    max-width: 500px;
-    width: 90%;
-    position: relative;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
-
-.modal-content h3 {
-    margin-bottom: 20px;
-    color: var(--primary);
-    text-align: center;
-}
-
-.modal-content p {
-    margin: 10px 0;
-    line-height: 1.6;
-}
-
-.modal-content a {
-    color: var(--secondary);
-    text-decoration: none;
-}
-
-.modal-content a:hover {
-    text-decoration: underline;
-}
-
-.close-btn {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    cursor: pointer;
-    font-size: 24px;
-    color: #999;
-    transition: color 0.3s ease;
-}
-
-.close-btn:hover {
-    color: var(--accent);
-}
     </style>
 </head>
 <body>
-<header>
-    <h4><a href="#" onclick="openContactElem(); return false;">YANIS BOUKAYOUH</a></h4>
-    <button class="menu-toggle">☰</button>
-
-        <a href="English.html"><img src="197374.png" alt="English"></a>
-</header>
+    <div class="bg-animation"></div>
+    
+    <header>
+        <nav>
+            <div class="logo">TAYOKEN</div>
+            <ul class="nav-links">
+                <li><a href="#home">Accueil</a></li>
+                <li><a href="#projects">Projets</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <main>
-        <section class="hero-section hidden visible">
-            <div class="description-container delay-1">
-                <h1>Recherche Alternance Développeur pour 2 ans</h1>
-                <h1>Je suis Yanis BOUKAYOUH</h1>
-                <p>Étudiant en 1ère année de BUT Informatique, je suis 
-passionné par la programmation depuis le collège (Scratch). Mes domaines
- de prédilection : développement web front-end, modding de jeux et 
-cartes électroniques (Arduino). Hors informatique, je m’adonne au 
-montage vidéo, au graphisme, au dessin et à l’assemblage de composants 
-électroniques.
-                </p>
-            </div>
-            <div class="photodep-container delay-2">
-                <a href="https://www.linkedin.com/in/yanis-boukayouh-aa400a339/">
-                    <img src="Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/187640478.png" alt="Profil Yanis">
-                </a>
-                <div class="mini-logos">
-                    <a href="https://github.com/TAYOKEN" target="_blank">
-                        <img src="Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/github.png" alt="GitHub">
-                    </a>
-                    <a href="Yanis BOUKAYOUH - Portfolio_fichiers/CV_BOUKAYOUHYANIS_ONLINE_ALTERNANCE.pdf" target="_blank">
-                        <img src="https://www.svgrepo.com/show/533447/square-cv.svg" alt="CV">
-                    </a>
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>TAYOKEN</h1>
+                    <p class="subtitle">Étudiant en Informatique</p>
+                    <p class="description">
+                        Passionné par le développement et l'apprentissage constant. 
+                        Spécialisé en Java, C, Lua, Python et PHP. 
+                        Créateur de solutions innovantes et projets créatifs.
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="#projects" class="btn btn-primary">
+                            <i class="fas fa-code"></i>
+                            Voir mes projets
+                        </a>
+                        <a href="https://github.com/TAYOKEN" class="btn btn-secondary" target="_blank">
+                            <i class="fab fa-github"></i>
+                            GitHub
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="education-languages-section hidden">
-            <h2 class="section-title">Mon Parcours &amp; Mes Langues</h2>
-            
-            <div class="education-languages-container">
-                <!-- Parcours scolaire à gauche -->
-                <div class="education-container delay-1">
-                    <h3 class="subsection-title">
-                        <img src="Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/4615221.png" alt="Éducation" class="section-icon">
-                        Parcours Scolaire
-                    </h3>
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-date">2024 - Présent</div>
-                            <div class="timeline-content">
-                                <h4>BUT Informatique</h4>
-                                <p>IUT de Marne la Vallée, Champs sur Marne</p>
-                            </div>
-                        </div>
-                        
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-date">2021 - 2024</div>
-                            <div class="timeline-content">
-                                <h4>Baccalauréat STI2D</h4>
-                                <p>Spécialités SIN</p>
-                                <p>Lycée Les Pierres Vives</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Vous pouvez ajouter d'autres formations ici -->
-                    </div>
+        <section id="projects" class="projects">
+            <div class="container">
+                <div class="section-title fade-in">
+                    <h2>Mes Projets</h2>
+                    <p>Découvrez une sélection de mes travaux et créations</p>
                 </div>
                 
-                <!-- Langues parlées à droite -->
-                <div class="languages-container delay-2">
-                    <h3 class="subsection-title">
-                        <img src="Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/484633.png" alt="Langues" class="section-icon">
-                        Langues Parlées
-                    </h3>
-                    <div class="languages-list">
-                        <div class="language-item">
-                            <img src="Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/197560.png" alt="Français" class="flag-icon">
-                            <div class="language-info">
-                                <h4>Français</h4>
-                                <div class="language-level">
-                                    <div class="level-dots">
-                                        <span class="dot active"></span>
-                                        <span class="dot active"></span>
-                                        <span class="dot active"></span>
-                                        <span class="dot active"></span>
-                                        <span class="dot active"></span>
-                                    </div>
-                                    <span class="level-text">Langue maternelle</span>
-                                </div>
+                <div class="projects-grid">
+                    <div class="project-card fade-in">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fab fa-discord"></i>
+                            </div>
+                            <div class="project-info">
+                                <h3>Kyoka Bot</h3>
+                                <span class="project-lang">Python</span>
                             </div>
                         </div>
-                        
-                        <div class="language-item">
-                            <img src="Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/197374.png" alt="Anglais" class="flag-icon">
-                            <div class="language-info">
-                                <h4>Anglais</h4>
-                                <div class="language-level">
-                                    <div class="level-dots">
-                                        <span class="dot active"></span>
-                                        <span class="dot active"></span>
-                                        <span class="dot active"></span>
-                                        <span class="dot active"></span>
-                                        <span class="dot"></span>
-                                    </div>
-                                    <span class="level-text">C1/C2 - Professionnel</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="language-item">
-                            <img src="Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/552073.png" alt="JP" class="flag-icon">
-                            <div class="language-info">
-                                <h4>Japonais</h4>
-                                <div class="language-level">
-                                    <div class="level-dots">
-                                        <span class="dot active"></span>
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                    </div>
-                                    <span class="level-text">A1 - Débutant</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        </div>
-                        
-                        <!-- Vous pouvez ajouter d'autres langues ici -->
-                    </div>
-                </div>
-            
-        </section>
-                <!--Boites des skills-->
-        <section class="skills-section hidden">
-            <h2 class="section-title">Mes Compétences</h2>
-            
-            <div class="skills-carousel">
-                <div class="carousel-container">
-                    <div class="carousel-track">
-                        <!-- Compétences en programmation -->
-                        <div class="skill-card">
-                            <img src="Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/html5-original.svg" alt="HTML5">
-                            <h3>HTML5</h3>
-                        </div>
-                        <div class="skill-card">
-                            <img src="Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/css3-original.svg" alt="CSS3">
-                            <h3>CSS3</h3>
-
-                        </div>
-                        
-                        
-                        <div class="skill-card">
-                            <img src="Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/python-original.svg" alt="Python">
-                            <h3>Python</h3>
- 
-                        </div>
-
-                        <div class="skill-card">
-                            <img src="Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/c-plain.svg" alt="C">
-                            <h3>C</h3>
-                        </div>
-                        
-                        <div class="skill-card">
-                            <img src="Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/php-original.svg" alt="PHP">
-                            <h3>PHP</h3>
-
-                        </div>
-
-                        <div class="skill-card">
-                            <img src="Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/lua-plain.svg" alt="Lua">
-                            <h3>Lua</h3>
-                        </div>
-                        
-                        <div class="skill-card">
-                            <img src="Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/java-original.svg" alt="Java">
-                            <h3>Java</h3>
-                        </div>
-                        
-                        <div class="skill-card">
-                            <img src="Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/mysql-original.svg" alt="SQL">
-                            <h3>SQL</h3>
-                        </div>
-
-                        <div class="skill-card">
-                            <img src="Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/linux-plain.svg" alt="Linux">
-                            <h3>Linux</h3>
-                        </div>
-                        
-                        <div class="skill-card">
-                            <img src="Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/arduino-original.svg" alt="Arduino">
-                            <h3>Arduino</h3>
-
-                            
+                        <p class="project-description">
+                            Bot Discord polyvalent conçu pour noter et évaluer les fichiers partagés. 
+                            Intègre des fonctionnalités avancées de modération et d'interaction communautaire.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://github.com/TAYOKEN/Kyoka" class="project-link" target="_blank">
+                                <i class="fab fa-github"></i>
+                                Code
+                            </a>
                         </div>
                     </div>
-                </div>
 
-                <button class="carousel-btn prev-btn">&lt;</button>
-                <button class="carousel-btn next-btn">&gt;</button>
+                    <div class="project-card fade-in">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
+                            <div class="project-info">
+                                <h3>Tetris</h3>
+                                <span class="project-lang">Python</span>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                           Projet Academique comportant, l'implémentation moderne du classique jeu Tetris avec une interface graphique intuitive.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://github.com/TAYOKEN/tetris" class="project-link" target="_blank">
+                                <i class="fab fa-github"></i>
+                                Code
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-dice"></i>
+                            </div>
+                            <div class="project-info">
+                                <h3>YAMS Java</h3>
+                                <span class="project-lang">Java / HTML</span>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Projet SAE de BUT Informatique - Implémentation du jeu de dés YAMS avec interface et logique de jeu complète. [Projet Academique]
+                        </p>
+                        <div class="project-links">
+                            <a href="https://github.com/Issam-BH/YAMS_JAVA" class="project-link" target="_blank">
+                                <i class="fab fa-github"></i>
+                                Code
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div class="project-info">
+                                <h3>SAE Base de Données</h3>
+                                <span class="project-lang">PHP</span>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Projet academique, Postgres / PHP comportant à la création d'un site web de gestion de vétérinaire.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://github.com/TAYOKEN/Sae_BDD" class="project-link" target="_blank">
+                                <i class="fab fa-github"></i>
+                                Code
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-sword"></i>
+                            </div>
+                            <div class="project-info">
+                                <h3>SilvEterna</h3>
+                                <span class="project-lang">PHP</span>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Projet Academique comportant à la création d'un réseau social pour sénior. Fait en PHP / PostgresSQL.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://github.com/yevhen-kefa/SilvEterna" class="project-link" target="_blank">
+                                <i class="fab fa-github"></i>
+                                Code
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="project-info">
+                                <h3>Vegito Mania</h3>
+                                <span class="project-lang">Markdown</span>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Mod du jeu DBZ Dokkan Battle comportant à l'ajout de cartes, event et items via SQLlite3 et LUA.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://github.com/TAYOKEN/Vegito_Mania" class="project-link" target="_blank">
+                                <i class="fab fa-github"></i>
+                                Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
-                <!--Boites des projets Academiques-->
 
-        <h2 class="section-title hidden">Projets Academiques</h2>
-        <section class="projects-grid">
-             <article class="project-card hidden delay-3">
-                <a href="https://tayoken.xyz/sae5">
-                    <img src="Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/1_002.png" alt="Site UNESCO">
-                </a>
-                <h3>Patrimoine UNESCO</h3>
-                <p>Site collaboratif avec backoffice PHP.<br><b>ATTENTION</b>: toujours en développement</p>
-            </article>
-
-            <article class="project-card hidden delay-3">
-              <a href="https://github.com/TAYOKEN/Sae_BDD">
-                  <img src="Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/1.png" alt="Sql">
-              </a>
-              <h3>Projet Gestion Base de Données</h3>
-              <p>Création de Base de Données puis création d'un site PHP lié à celle-ci.<br><b>ATTENTION</b>: aucun lien pour l'instant</p>
-          </article>
-
-          <article class="project-card hidden delay-3">
-            <a href="https://github.com/TAYOKEN/tetris">
-                <img src="Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/2.png" alt="Tetris">
-            </a>
-            <h3>Projet Python</h3>
-            <p>Récration du jeu Tetris en Python avec la bibliothèque FLTK.</p>
-        </article>
-
-        <article class="project-card hidden delay-3">
-    <a href="#">
-        <img src="Yanis BOUKAYOUH - Portfolio_fichiers/1.png" onclick="openUnavailableElem()" alt="Réseaux">
-    </a>
-    <h3>Projet Réseau</h3>
-    <p>Création d'un réseau client-serveur avec netkit.</p>
-</article>
-
-<!-- Le modal -->
-<div id="unavailable" class="modal-overlay">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
-        <p id="modal-message">Message par défaut</p>
-    </div>
-</div>
-
-        
-        <article class="project-card hidden delay-3">
-            <a href="https://github.com/Issam-BH/YAMS_JAVA">
-                <img src="Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/grille-score-yams.jpg" alt="Tetris">
-            </a>
-            <h3>Projet Java</h3>
-            <p>Projet de recréation du jeu Yams, en JAVA dans le terminal.</p>
-        </article>
-
-        <article class="project-card hidden delay-3">
-            <a href="https://github.com/TAYOKEN/SAE_JavaFX">
-                <img src="https://media.discordapp.net/attachments/1281284778611441669/1372550326930112655/Capture_decran_2025-05-15_142252.png?ex=68345d9a&is=68330c1a&hm=7b6151216f27c0e333fede5effbc0432ca39ecfec624260b6758c8a8674daa64&=&format=webp&quality=lossless" alt="Tetris">
-            </a>
-            <h3>Projet JavaFX</h3>
-            <p>Projet de création de logiciel permettant de créer sa pizza.</p>
-        </article>
-
-         <article class="project-card hidden delay-3">
-            <a href="https://github.com/yevhen-kefa/SilvEterna">
-                <img src="https://media.discordapp.net/attachments/856614592570720267/1376268479409291395/image.png?ex=6834b567&is=683363e7&hm=ce1a21e8456b569fe4082f9f1f69f8133c40eb8c0e078c18938d1e6dc7dcb7dc&=&format=webp&quality=lossless" alt="SilvEterna">
-            </a>
-            <h3>Projet SilvEterna</h3>
-            <p>Projet de création d'un réseau social ciblé pour les séniors.</p>
-        </article>
-
-        <article class="project-card hidden delay-3">
-            <a href="https://github.com/TAYOKEN/sae-graphes">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgfat8Gt7cDckFKDCcSVnfttmXkNDMaDhESA&s" alt="Graphes">
-            </a>
-            <h3>Projet Graphes</h3>
-            <p>Projet de simulation de théorie des graphes.</p>
-        </article>
-</section>
-        <!--Boites des projets perso-->
-        <h2 class="section-title hidden">Projets Personnels</h2>
-        <section class="projects-grid">
-            <article class="project-card hidden delay-1">
-                <a href="https://github.com/TAYOKEN/Kyoka">
-                    <img src="Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/3.png" alt="Kyoka Bot">
-                </a>
-                <h3>Kyoka Discord Bot</h3>
-                <p>Plateforme de notation d'images avec système de classement en Python</p>
-            </article>
-
-            <article class="project-card hidden delay-2">
-                <a href="https://discord.gg/JhhBvauguX">
-                    <img src="Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/Vegitomania%20final.png" alt="Mods Dokkan">
-                </a>
-                <h3>Modding</h3>
-                <p>Modifications SQL/Lua pour DBZ Dokkan Battle</p>
-            </article>
-
-            <article class="project-card hidden delay-2">
-                <a href="https://github.com/TAYOKEN/Renaming-Tool">
-                    <img src="https://www.tenforums.com/geek/gars/images/2/types/thumb_14486407500Folder.png" alt="Renaming-Tool">
-                </a>
-                <h3>Renaming tool</h3>
-                <p>Programme simple pour remplacer des éléments dans les noms de fichier.</p>
-            </article>
-
-            <article class="project-card hidden delay-2">
-                <a href="https://github.com/TAYOKEN/Grep-tool">
-                    <img src="https://img.icons8.com/color/512/bash.png" alt="Renaming-Tool">
-                </a>
-                <h3>Grep tool</h3>
-                <p>Entrainement pour examen de bash.</p>
-            </article>
-           
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="contact-content fade-in">
+                    <h2>Restons en Contact</h2>
+                    <p>N'hésitez pas à me contacter pour discuter de projets, collaborations ou simplement échanger !</p>
+                    
+                    <div class="contact-links">
+                        <a href="mailto:contact@tayoken.xyz" class="contact-link">
+                            <i class="fas fa-envelope"></i>
+                            contact@tayoken.xyz
+                        </a>
+                        <a href="https://github.com/TAYOKEN" class="contact-link" target="_blank">
+                            <i class="fab fa-github"></i>
+                            GitHub
+                        </a>
+                        <a href="https://tayoken.xyz/" class="contact-link" target="_blank">
+                            <i class="fas fa-globe"></i>
+                            tayoken.xyz
+                        </a>
+                    </div>
+                </div>
+            </div>
         </section>
-
-        <div id="contact" class="modal-overlay">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeContactModal()">&times;</span>
-        <h3>Informations de contact</h3>
-        <p><strong>Téléphone :</strong> <a href="tel:+33766362667">+33 7 66 36 26 67</a></p>
-        <p><strong>Email :</strong> <a href="mailto:yanisboukayouh@gmail.com">yanisboukayouh@gmail.com</a></p>
-    </div>
-
     </main>
 
-    <footer class="hidden">
-        <p>© 2025 tayoken.xyz</p>
-        <p>Contact : <a href="mailto:yanisboukayouh@gmail.com">yanisboukayouh@gmail.com</a></p>
-        <p>Téléphone : <a href="tel:+33766362667">+33 7 66 36 26 67</a></p>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 TAYOKEN.</p>
+        </div>
     </footer>
 
     <script>
-        // Animation au scroll
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(15, 15, 35, 0.95)';
+            } else {
+                header.style.background = 'rgba(15, 15, 35, 0.9)';
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 }
             });
-        }, { threshold: 0.1 });
+        }, observerOptions);
 
-        document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
-
-        // Menu mobile
-        const menuToggle = document.querySelector('.menu-toggle');
-        const nav = document.querySelector('nav');
-
-        menuToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            nav.classList.toggle('active');
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
         });
 
-        document.addEventListener('click', () => {
-            nav.classList.remove('active');
-        });
-
-        // Optimisation mobile
-        function handleResize() {
-            if (window.innerWidth > 768) {
-                nav.classList.remove('active');
+        // Parallax effect for background
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const bg = document.querySelector('.bg-animation::before');
+            if (bg) {
+                bg.style.transform = `translateY(${scrolled * 0.5}px)`;
             }
+        });
+
+        // Project cards hover effect enhancement
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add typing effect to hero title
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
         }
 
-        window.addEventListener('resize', handleResize);
+        // Initialize typing effect when page loads
+        window.addEventListener('load', () => {
+            const heroTitle = document.querySelector('.hero h1');
+            if (heroTitle) {
+                const originalText = heroTitle.textContent;
+                typeWriter(heroTitle, originalText, 150);
+            }
+        });
 
-            // Carrousel de compétences
-    const track = document.querySelector('.carousel-track');
-    const cards = document.querySelectorAll('.skill-card');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
-    
-    let cardWidth = cards[0].offsetWidth + 20; // Largeur + gap
-    let currentPosition = 0;
-    let maxPosition = cards.length * cardWidth - track.parentElement.offsetWidth;
-    
-    // Fonction pour recalculer les dimensions lors du redimensionnement
-    function updateCarouselDimensions() {
-        cardWidth = cards[0].offsetWidth + 20;
-        maxPosition = cards.length * cardWidth - track.parentElement.offsetWidth;
-        
-        // S'assurer que la position actuelle est valide
-        if (currentPosition > maxPosition) {
-            currentPosition = maxPosition;
-            updateCarouselPosition();
-        }
-    }
-    
-    // Fonction pour mettre à jour la position du carrousel
-    function updateCarouselPosition() {
-        track.style.transform = `translateX(-${currentPosition}px)`;
-    }
-    
-    // Gestionnaires d'événements pour les boutons de navigation
-    prevBtn.addEventListener('click', () => {
-        currentPosition = Math.max(currentPosition - cardWidth * 2, 0);
-        updateCarouselPosition();
-    });
-    
-    nextBtn.addEventListener('click', () => {
-        currentPosition = Math.min(currentPosition + cardWidth * 2, maxPosition);
-        updateCarouselPosition();
-    });
-    
-    // Écouter les changements de taille d'écran
-    window.addEventListener('resize', updateCarouselDimensions);
-    
-    // Initialiser les dimensions au chargement
-    window.addEventListener('load', updateCarouselDimensions);
+        // Add particle effect on mouse move
+        document.addEventListener('mousemove', (e) => {
+            const particle = document.createElement('div');
+            particle.style.cssText = `
+                position: fixed;
+                width: 4px;
+                height: 4px;
+                background: rgba(99, 102, 241, 0.6);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 9999;
+                left: ${e.clientX}px;
+                top: ${e.clientY}px;
+                animation: particleFade 1s ease-out forwards;
+            `;
+            
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 1000);
+        });
 
-        
-var unavailableModal = document.getElementById("unavailable");
-
-function openUnavailableElem() {
-    document.getElementById("modal-message").innerText = "Cet élément n'est pas disponible";
-    document.getElementById("unavailable").style.display = "flex";
-}
-
-// Fonction pour ouvrir les infos contact
-function openContactElem() {
-    document.getElementById("contact").style.display = "flex";
-}
-
-// Fonction pour fermer le modal "unavailable"
-function closeModal() {
-    document.getElementById("unavailable").style.display = "none";
-}
-
-// Fonction pour fermer le modal "contact"
-function closeContactModal() {
-    document.getElementById("contact").style.display = "none";
-}
-
-// Gestionnaire pour fermer les modals en cliquant en dehors
-window.onclick = function(event) {
-    const unavailableModal = document.getElementById("unavailable");
-    const contactModal = document.getElementById("contact");
-    
-    if (event.target === unavailableModal) {
-        closeModal();
-    }
-    if (event.target === contactModal) {
-        closeContactModal();
-    }
-}
+        // Add CSS for particle animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes particleFade {
+                0% {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+                100% {
+                    opacity: 0;
+                    transform: scale(0) translateY(-20px);
+                }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
-
-</body></html>
+</body>
+</html>
