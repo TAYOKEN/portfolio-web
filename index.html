@@ -215,6 +215,133 @@
             background: rgba(99, 102, 241, 0.1);
         }
 
+        /* Social Media Section */
+        .social-media {
+            padding: 6rem 0;
+            background: var(--bg-darker);
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .social-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .social-icon.twitter {
+            background: linear-gradient(135deg, #1da1f2, #0d8bd9);
+        }
+
+        .social-icon.instagram {
+            background: linear-gradient(135deg, #e4405f, #833ab4, #fcb045);
+        }
+
+        .social-icon.steam {
+            background: linear-gradient(135deg, #1b2838, #2a475e);
+        }
+
+        .social-icon.youtube {
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+        }
+
+        .social-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .social-handle {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .social-content {
+            margin-bottom: 1.5rem;
+        }
+
+        .steam-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        .youtube-video {
+            width: 100%;
+            height: 200px;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 8px;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
         /* Projects section */
         .projects {
             padding: 6rem 0;
@@ -339,7 +466,6 @@
         /* Contact section */
         .contact {
             padding: 6rem 0;
-            background: var(--bg-darker);
         }
 
         .contact-content {
@@ -381,6 +507,7 @@
             text-align: center;
             border-top: 1px solid var(--border-color);
             color: var(--text-muted);
+            background: var(--bg-darker);
         }
 
         /* Animations */
@@ -406,6 +533,20 @@
             transform: translateY(0);
         }
 
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(99, 102, 241, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
@@ -421,13 +562,17 @@
                 align-items: center;
             }
             
-            .projects-grid {
+            .projects-grid, .social-grid {
                 grid-template-columns: 1fr;
             }
             
             .contact-links {
                 flex-direction: column;
                 align-items: center;
+            }
+
+            .steam-stats {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -440,6 +585,7 @@
             <div class="logo">TAYOKEN</div>
             <ul class="nav-links">
                 <li><a href="#home">Accueil</a></li>
+                <li><a href="#social">Réseaux</a></li>
                 <li><a href="#projects">Projets</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -467,6 +613,79 @@
                             GitHub
                         </a>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="social" class="social-media">
+            <div class="container">
+                <div class="section-title fade-in">
+                    <h2>Mes Réseaux Sociaux</h2>
+                    <p>Suivez-moi sur mes différentes plateformes</p>
+                </div>
+                
+                <div class="social-grid">
+                    <!-- Twitter/X Card -->
+                    <div class="social-card fade-in">
+                        <div class="social-header">
+                            <div class="social-icon twitter">
+                                <i class="fab fa-x-twitter"></i>
+                            </div>
+                            <div class="social-info">
+                                <h3>X (Twitter)</h3>
+                                <p class="social-handle">@tayoken_ytd</p>
+                            </div>
+                        </div>
+                        <div class="social-content">
+                            <p>Suivez mes dernières actualités et découvertes en développement</p>
+                        </div>
+                        <a href="https://x.com/tayoken_ytd" class="social-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                            Suivre sur X
+                        </a>
+                    </div>
+
+                    <!-- Instagram Card -->
+                    <div class="social-card fade-in">
+                        <div class="social-header">
+                            <div class="social-icon instagram">
+                                <i class="fab fa-instagram"></i>
+                            </div>
+                            <div class="social-info">
+                                <h3>Instagram</h3>
+                                <p class="social-handle">@tayoken_ytd</p>
+                            </div>
+                        </div>
+                        <div class="social-content">
+                            <p>Découvrez mon quotidien et mes projets en cours</p>
+                        </div>
+                        <a href="https://www.instagram.com/tayoken_ytd/" class="social-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                            Suivre sur Instagram
+                        </a>
+                    </div>
+
+                    <!-- Steam Card -->
+                    <div class="social-card fade-in">
+                        <div class="social-header">
+                            <div class="social-icon steam">
+                                <i class="fab fa-steam"></i>
+                            </div>
+                            <div class="social-info">
+                                <h3>Steam</h3>
+                                <p class="social-handle">TAYOKEN</p>
+                            </div>
+                        </div>
+                        <div class="social-content" id="steam-content">
+                            <div class="loading"></div>
+                            <p>Chargement des statistiques Steam...</p>
+                        </div>
+                        <a href="https://steamcommunity.com/profiles/76561199041987893/" class="social-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                            Voir profil Steam
+                        </a>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -567,7 +786,7 @@
                     <div class="project-card fade-in">
                         <div class="project-header">
                             <div class="project-icon">
-                                <i class="fas fa-sword"></i>
+                                <i class="fas fa-users"></i>
                             </div>
                             <div class="project-info">
                                 <h3>SilvEterna</h3>
@@ -588,11 +807,11 @@
                     <div class="project-card fade-in">
                         <div class="project-header">
                             <div class="project-icon">
-                                <i class="fas fa-user"></i>
+                                <i class="fas fa-dragon"></i>
                             </div>
                             <div class="project-info">
                                 <h3>Vegito Mania</h3>
-                                <span class="project-lang">Markdown</span>
+                                <span class="project-lang">Lua / SQLite</span>
                             </div>
                         </div>
                         <p class="project-description">
