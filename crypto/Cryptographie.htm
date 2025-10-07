@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <title>Cryptographie</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="Cryptographie_fichiers/katex.min.css">
+      
+      
+      
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="-cryptographie">🔐 Cryptographie </h1>
+<h1 id="-graphes">🌐 Graphes </h1>
+<hr>
+<h2 id="-introduction-aux-graphes">📘 Introduction aux Graphes </h2>
+<p>Un <strong>graphe</strong> est un ensemble de <strong>points</strong> (appelés <em>sommets</em>) reliés par des <strong>arêtes</strong>.</p>
+<ul>
+<li>🔵 <strong>Sommets</strong> : points non étiquetés et non orientés</li>
+<li>🟢 <strong>Arêtes</strong> : relient deux sommets et peuvent être étiquetées</li>
+</ul>
+<blockquote>
+<p>🧠 Le mot <em>graphe</em> vient de l’allemand <em>graphen</em>.<br>
+💻 Les <strong>automates finis</strong> sont des applications de la théorie des graphes, notamment en <strong>compilation</strong>.<br>
+🕰️ Les graphes apparaissent dès <strong>1736</strong> avec le célèbre <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_des_sept_ponts_de_K%C3%B6nigsberg">problème des sept ponts de Königsberg</a>.</p>
+</blockquote>
+<hr>
+<h2 id="-définition-formelle">🧩 Définition formelle </h2>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>G</mi><mo>=</mo><mo stretchy="false">(</mo><mi>S</mi><mo separator="true">,</mo><mi>A</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">G = (S, A)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">G</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">A</span><span class="mclose">)</span></span></span></span></span></p>
+<ul>
+<li><span style="color:#4CAF50"><strong>S</strong></span> : ensemble de sommets</li>
+<li><span style="color:#2196F3"><strong>A</strong></span> : ensemble d’arêtes ({x, y}) où (x, y \in S) et (x \neq y)</li>
+</ul>
+<p>Un graphe est <strong>fini</strong> si le nombre de sommets est fini.</p>
+<p><strong>Notations :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Symbole</th>
+<th>Signification</th>
+<th>Nom</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(</td>
+<td>S</td>
+<td>)</td>
+<td>Nombre de sommets</td>
+<td><strong>Ordre du graphe</strong> ((n_g))</td>
+</tr>
+<tr>
+<td>(</td>
+<td>A</td>
+<td>)</td>
+<td>Nombre d’arêtes</td>
+<td><strong>Taille du graphe</strong> ((m_g))</td>
+</tr>
+</tbody>
+</table>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>m</mi><mo>≤</mo><mfrac><mrow><mi>n</mi><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">0 \leq m \leq \frac{n(n - 1)}{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.113em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<hr>
+<h2 id="-propriété-de-la-poignée-de-mains">🤝 Propriété de la poignée de mains </h2>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><munder><mo>∑</mo><mrow><mi>s</mi><mo>∈</mo><mi>S</mi></mrow></munder><mi>d</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn><mi>m</mi></mrow><annotation encoding="application/x-tex">\sum_{s \in S} d(s) = 2m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.3717em;vertical-align:-1.3217em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.05em;"><span style="top:-1.8557em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mrel mtight">∈</span><span class="mord mathnormal mtight" style="margin-right:0.05764em;">S</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.3217em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mord mathnormal">m</span></span></span></span></span></p>
+<blockquote>
+<p>🔹 Le <strong>nombre de sommets de degré impair</strong> dans un graphe est <strong>toujours pair</strong> ✅</p>
+</blockquote>
+<hr>
+<h2 id="-propriété-des-tiroirs">📐 Propriété des tiroirs </h2>
+<p>Dans tout graphe à au moins deux sommets :<br>
+➡️ <strong>Deux sommets au moins ont le même degré.</strong></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>d</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo><mo>≤</mo><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0 \leq d(s) \leq n - 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span></p>
+<hr>
+<h2 id="-chaîne-et-cycle">🪢 Chaîne et Cycle </h2>
+<p>Une <strong>chaîne</strong> est une suite de sommets :</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>s</mi><mn>0</mn></msub><mo separator="true">,</mo><mtext> </mtext><msub><mi>s</mi><mn>1</mn></msub><mo separator="true">,</mo><mtext> </mtext><msub><mi>s</mi><mn>2</mn></msub><mo separator="true">,</mo><mtext> </mtext><mo>…</mo><mo separator="true">,</mo><mtext> </mtext><msub><mi>s</mi><mi>N</mi></msub></mrow><annotation encoding="application/x-tex">s_0,\, s_1,\, s_2,\, \dots,\, s_N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<ul>
+<li>📏 Longueur = nombre d’arêtes</li>
+<li>🔹 Longueur 0 → un seul sommet</li>
+<li>🔸 Longueur 1 → deux sommets adjacents</li>
+<li>🔗 Notation : (S - T) si une chaîne relie (S) et (T)</li>
+</ul>
+<h3 id="types-de-chaînes">Types de chaînes </h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Définition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🌱 Élémentaire</td>
+<td>Sommets tous distincts</td>
+</tr>
+<tr>
+<td>🌀 Simple</td>
+<td>Arêtes toutes distinctes</td>
+</tr>
+<tr>
+<td>🔒 Fermée</td>
+<td>(s_0 = s_N)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cycles">Cycles </h3>
+<ul>
+<li>🔄 <strong>Cycle</strong> = chaîne fermée simple</li>
+<li>🌳 <strong>Graphe acyclique</strong> = graphe sans cycle</li>
+</ul>
+<hr>
+<h2 id="-arbres-et-forêts">🌲 Arbres et Forêts </h2>
+<table>
+<thead>
+<tr>
+<th>Terme</th>
+<th>Définition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🌳 <strong>Arbre</strong></td>
+<td>Graphe connexe, acyclique et non vide</td>
+</tr>
+<tr>
+<td>🌲 <strong>Forêt</strong></td>
+<td>Graphe acyclique (pas forcément connexe)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="représentations-possibles">Représentations possibles </h3>
+<ul>
+<li>📊 <strong>Matrice d’adjacence</strong></li>
+<li>📜 <strong>Liste d’adjacence</strong></li>
+</ul>
+<hr>
+<h2 id="-exercices">🎯 Exercices </h2>
+<h3 id="1️⃣-enseignants-et-cours">1️⃣ Enseignants et cours </h3>
+<p>👨‍🏫 6 enseignants : <span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo stretchy="false">(</mo><msub><mi>E</mi><mn>1</mn></msub><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><msub><mi>E</mi><mn>6</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(E_1, \dots, E_6)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></p>
+<p>📚 6 cours : <span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo stretchy="false">(</mo><msub><mi>C</mi><mn>1</mn></msub><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><msub><mi>C</mi><mn>6</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(C_1, \dots, C_6)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></p>
+<table>
+<thead>
+<tr>
+<th>Enseignant</th>
+<th>Cours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E₁</td>
+<td>C₁, C₂</td>
+</tr>
+<tr>
+<td>E₂</td>
+<td>C₁, C₂, C₃</td>
+</tr>
+<tr>
+<td>E₃</td>
+<td>C₂</td>
+</tr>
+<tr>
+<td>E₄</td>
+<td>C₂, C₄, C₅</td>
+</tr>
+<tr>
+<td>E₅</td>
+<td>C₄, C₆</td>
+</tr>
+<tr>
+<td>E₆</td>
+<td>C₅, C₆</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="2️⃣-jurys">2️⃣ Jurys </h3>
+<p>⚖️ 7 jurys <span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo stretchy="false">(</mo><msub><mi>J</mi><mn>1</mn></msub><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><msub><mi>J</mi><mn>7</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(J_1, \dots, J_7)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.09618em;">J</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0962em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.09618em;">J</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0962em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">7</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></p>
+<p><strong>Conditions :</strong></p>
+<ol>
+<li>Chaque examinateur participe à <strong>2 jurys</strong></li>
+<li>Deux jurys quelconques ont <strong>exactement 1 examinateur en commun</strong></li>
+</ol>
+<p><strong>Résultats :</strong></p>
+<ul>
+<li>🔢 Nombre total d’examinateurs :<br>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>n</mi><mo>=</mo><mfrac><mrow><mn>6</mn><mo>×</mo><mn>7</mn></mrow><mn>2</mn></mfrac><mo>=</mo><mn>21</mn></mrow><annotation encoding="application/x-tex">n = \frac{6 \times 7}{2} = 21</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0074em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">6</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">7</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">21</span></span></span></span></span></li>
+<li>👩‍⚖️ Examinateurs par jury : <strong>6</strong></li>
+</ul>
+<hr>
+<h3 id="3️⃣-traversée-homme--femme--maîtresse">3️⃣ Traversée Homme – Femme – Maîtresse </h3>
+<p>🚤 Un homme, sa femme et sa maîtresse veulent traverser une rivière avec un passeur.</p>
+<p><strong>Contraintes :</strong></p>
+<ul>
+<li>👩 La femme refuse que <strong>mari + maîtresse</strong> soient seuls.</li>
+<li>👨 Le mari refuse que <strong>femme + maîtresse</strong> soient seules.</li>
+</ul>
+<p><strong>Tâches :</strong></p>
+<ol>
+<li>Modéliser le problème en <strong>graphe biparti</strong></li>
+<li>Trouver les <strong>chaînes minimales</strong> (traversées les plus courtes)</li>
+</ol>
+<hr>
+<h3 id="4️⃣-théorème-deuler-1736">4️⃣ Théorème d’Euler (1736) </h3>
+<p>Dans un graphe sans sommet isolé :</p>
+<table>
+<thead>
+<tr>
+<th>Cas</th>
+<th>Type de parcours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 ou 2 sommets de degré impair</td>
+<td><strong>Chaîne eulérienne</strong></td>
+</tr>
+<tr>
+<td>Tous les sommets pairs</td>
+<td><strong>Cycle eulérien</strong></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="5️⃣-graphe-k-régulier">5️⃣ Graphe k-régulier </h3>
+<p>Si un graphe est <strong>k-régulier</strong> avec (n) sommets :</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>m</mi><mo>=</mo><mfrac><mrow><mi>n</mi><mo>⋅</mo><mi>k</mi></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">m = \frac{n \cdot k}{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0574em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<hr>
+<h3 id="6️⃣-exercices-sur-les-degrés">6️⃣ Exercices sur les degrés </h3>
+<table>
+<thead>
+<tr>
+<th>Degrés</th>
+<th>Possible ?</th>
+<th>Raison</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2, 3, 3, 3, 3</td>
+<td>✅</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2, 2, 3, 3, 3</td>
+<td>❌</td>
+<td>Nombre impair de degrés impairs</td>
+</tr>
+<tr>
+<td>2, 2, 2, 3, 3</td>
+<td>✅</td>
+<td>—</td>
+</tr>
+<tr>
+<td>0, 1, 2, 3, 4</td>
+<td>❌</td>
+<td>Contredit la propriété des tiroirs</td>
+</tr>
+<tr>
+<td>1, 1, 2, 3, 3</td>
+<td>✅</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2, 2, 4, 4, 4</td>
+<td>❌</td>
+<td>Impossible structurellement</td>
+</tr>
+<tr>
+<td>1, 1, 1, 3, 4</td>
+<td>❌</td>
+<td>Degrés impairs impairs</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="7️⃣-tournoi-de-football">7️⃣ Tournoi de football </h3>
+<p>⚽ 5 équipes, chacune joue contre 3 autres.</p>
+<p>🚫 Impossible : cela donnerait <strong>5 sommets de degré 3</strong> (nombre impair de degrés impairs).</p>
+<hr>
+<h3 id="8️⃣-pays-et-frontières">8️⃣ Pays et frontières </h3>
+<p>5 pays, 7 frontières :</p>
+<ol>
+<li>🔄 Peut-on faire un <strong>cycle eulérien</strong> ? → <strong>Non</strong></li>
+<li>🚶 Peut-on faire une <strong>chaîne eulérienne</strong> ? → <strong>Oui</strong> (2 sommets impairs)</li>
+<li>✏️ Tracer une route avec <strong>12 segments</strong> sans repasser ? → <strong>Non</strong> (4 sommets impairs)</li>
+</ol>
+<hr>
+<h2 id="️-algorithmes">⚙️ Algorithmes </h2>
+<h3 id="-arbre-couvrant">🌳 Arbre couvrant </h3>
+<pre data-role="codeBlock" data-info="pseudo" class="language-pseudo pseudo"><code>Fonction ArbreCouvrant(G, S₀)
+    P[s_j] ← S₀  # père origine (init)
+    Pour tout sommet S ∈ G
+        P[s] ← ∅  # init de la liste des pères
+    FinPour
+
+    Tant que E ≠ ∅ faire
+        Prendre s ∈ E
+        Pour tout k ∈ S adjacent à s faire
+            Si E = E ∪ {k} alors
+                P[k] ← s  # ajout du père
+            FinSi
+        FinPour
+        E ← E − {s}  # suppression du sommet traité
+    FinTantQue
+
+    Retour P
+FinFonction
+</code></pre><hr>
+<h3 id="-recherche-de-chaîne">🔗 Recherche de chaîne </h3>
+<pre data-role="codeBlock" data-info="pseudo" class="language-pseudo pseudo"><code>Fonction Chaîne(G, S₀, S)
+    Si S₀ et S sont connectés alors
+        Pour toute suite S de sommets distincts de S₀ à S faire
+            Si S est une chaîne alors
+                Retour S
+            FinSi
+        FinPour
+    FinSi
+FinFonction
+</code></pre><hr>
+<h3 id="-forêt-couvrante">🌲 Forêt couvrante </h3>
+<pre data-role="codeBlock" data-info="pseudo" class="language-pseudo pseudo"><code>Fonction ForetCouvrante(G, Sommet)
+    P ← ∅
+    Pour tout sommet s faire
+        P[s] ← 0
+    FinPour
+
+    Tant que ∃ s tel que P[s] = 0 faire
+        E ← {s}
+        Tant que E ≠ ∅ faire
+            Prendre x ∈ E
+            Pour tout t voisin de x faire
+                Si P[t] = 0 alors
+                    E ← E ∪ {t}
+                    P[t] ← s
+                FinSi
+            FinPour
+        FinTantQue
+    FinTantQue
+
+    Retour P
+FinFonction
+</code></pre><hr>
+<h3 id="-vérification-daccessibilité">🔍 Vérification d’accessibilité </h3>
+<pre data-role="codeBlock" data-info="pseudo" class="language-pseudo pseudo"><code>Fonction Acces(G, S₀)
+    Pour tout sommet s ≠ S₀ faire
+        Atteint[s] ← Faux
+    FinPour
+    Atteint[S₀] ← Vrai
+    E ← {S₀}
+
+    Tant que E ≠ ∅ faire
+        Prendre s ∈ E
+        Pour tout t voisin de s faire
+            Si Atteint[t] = Faux alors
+                E ← E ∪ {t}
+                Atteint[t] ← Vrai
+            FinSi
+        FinPour
+        E ← E − {s}
+    FinTantQue
+
+    Retour Atteint
+FinFonction
+</code></pre><hr>
+<h1 id="rappel-semaine-dernière">Rappel semaine dernière </h1>
+<p>Algorithme d'accessibilité</p>
+<p><strong>Entrée</strong> : G graphe simple, S₀ sommet</p>
+<p><strong>Sortie</strong> : arbre couvrant pour les sommets accessibles de S₀</p>
+<h2 id="algorithmes-vus">Algorithmes vus </h2>
+<ol>
+<li>
+<p><strong>Algo énumératif</strong> : minimalité : oui - Compléxité:   exponentielle a^n 💀</p>
+</li>
+<li>
+<p><strong>Algorithme Bellmann ford</strong> : minimalité oui (parcours en largeur) - Compléxité : quadratique</p>
+</li>
+<li>
+<p><strong>Algo parcours par voisinage</strong> : Minimalité : non - Compléxité : linéaire</p>
+</li>
+</ol>
+<h2 id="i-parcours-en-largeur">I) Parcours en Largeur </h2>
+<h3 id="stratégie-de-parcours-en-largeur-">Stratégie de parcours en largeur : </h3>
+<p>Le <strong>parcours en largeur</strong> sert à explorer <strong>tous les sommets accessibles</strong> d’un graphe à partir d’un sommet de départ, <strong>niveau par niveau</strong>.</p>
+<ol>
+<li>
+<p>On <strong>met le sommet de départ dans une file (queue)</strong>.</p>
+</li>
+<li>
+<p>Tant que la file n’est pas vide :</p>
+<ul>
+<li>On <strong>retire</strong> le premier sommet de la file.</li>
+<li>On <strong>visite tous ses voisins non encore visités</strong> et on les <strong>ajoute à la file</strong>.</li>
+</ul>
+</li>
+<li>
+<p>On continue jusqu’à ce que <strong>tous les sommets atteignables soient visités</strong>.</p>
+</li>
+</ol>
+<h4 id="file-fifo">File FIFO </h4>
+<p>(First in first out, premier entré, premier sorti)</p>
+<pre data-role="codeBlock" data-info="PYTHON" class="language-python PYTHON"><code><span class="token keyword keyword-def">def</span> <span class="token function">FonctionLargeur</span> <span class="token punctuation">(</span>G<span class="token punctuation">:</span> Graphe<span class="token punctuation">,</span> S₀<span class="token punctuation">:</span> Sommet<span class="token punctuation">)</span> p <span class="token punctuation">:</span> sommet <span class="token operator">-</span><span class="token operator">&gt;</span> sommet U <span class="token punctuation">{</span>O<span class="token punctuation">}</span> d<span class="token punctuation">:</span> Sommet <span class="token operator">-</span><span class="token operator">&gt;</span> N U <span class="token punctuation">{</span>∞<span class="token punctuation">}</span>
+d<span class="token punctuation">[</span>s<span class="token punctuation">]</span> <span class="token operator">=</span> d<span class="token punctuation">(</span>S₀<span class="token punctuation">,</span> S<span class="token punctuation">)</span> <span class="token comment"># + petite longueur des chaines de S₀ à S </span>
+
+<span class="token comment">#initialistation</span>
+P<span class="token punctuation">[</span>S₀<span class="token punctuation">]</span> <span class="token operator">=</span> S₀
+d<span class="token punctuation">[</span>S₀<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+
+<span class="token keyword keyword-for">for</span> sommet s <span class="token keyword keyword-in">in</span> graphe<span class="token punctuation">:</span> 
+    p<span class="token punctuation">[</span>s<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span> 
+    d<span class="token punctuation">[</span>s<span class="token punctuation">]</span> <span class="token operator">=</span> ∞ 
+Atteint <span class="token operator">=</span> <span class="token punctuation">[</span>S₀<span class="token punctuation">]</span>
+<span class="token comment">#Traitement</span>
+
+<span class="token keyword keyword-while">while</span> Atteint <span class="token keyword keyword-is">is</span> <span class="token keyword keyword-not">not</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+    S <span class="token operator">=</span> <span class="token string">"premier élement de atteint"</span>
+    <span class="token keyword keyword-for">for</span> t<span class="token operator">-</span>s <span class="token keyword keyword-and">and</span> p<span class="token punctuation">[</span>t<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token string">"Ajout de t à la fin de atteint"</span>
+    <span class="token comment"># S est traité</span>
+    p<span class="token punctuation">[</span>t<span class="token punctuation">]</span> <span class="token operator">=</span> s
+    d<span class="token punctuation">[</span>t<span class="token punctuation">]</span> <span class="token operator">=</span> d<span class="token punctuation">[</span>s<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span>
+    <span class="token string">"Enlever S en début de File"</span>
+<span class="token keyword keyword-return">return</span> <span class="token punctuation">(</span>p<span class="token punctuation">,</span>d<span class="token punctuation">)</span>
+</code></pre><hr>
+<h3 id="-graphe-dinitialisation">🧩 Graphe d’initialisation </h3>
+<p><strong>Légende</strong> :<br>
+🔵 = Non atteint<br>
+🟢 = Atteint non traité<br>
+🔴 = Traité</p>
+<pre class="language-text">   1🟢───2🔵───3🔵───4🔵
+    │              │     |
+    │              │     |
+    │              │     |
+    5🔵──────────6🔵───7🔵
+                    
+                    
+                    8🔵───9🔵
+</pre>
+<h3 id="étape-2-">Étape 2 : </h3>
+<pre class="language-text">   1🔴───2🟢───3🔵───4🔵
+    │              │     |
+    │              │     |
+    │              │     |
+    5🔴──────────6🟢───7🔵
+                    
+                    
+                    8🔵───9🔵
+</pre>
+<h3 id="étape-3-">Étape 3 : </h3>
+<pre class="language-text">   1🔴───2🔴───3🟢───4🔵
+    │              │     |
+    │              │     |
+    │              │     |
+    5🔴──────────6🔴───7🟢
+                    
+                    
+                    8🔵───9🔵
+</pre>
+<h3 id="étape-4-">Étape 4 : </h3>
+<pre class="language-text">   1🔴───2🔴───3🔴─── 4🟢
+    │              │     |
+    │              │     |
+    │              │     |
+    5🔴──────────6🔴───7🔴
+                    
+                    
+                    8🔵───9🔵
+</pre>
+<h3 id="étape-5-">Étape 5 : </h3>
+<pre class="language-text">   1🔴───2🔴───3🔴─── 4🔴
+    │              │     |
+    │              │     |
+    │              │     |
+    5🔴──────────6🔴───7🔴
+                    
+                    
+                    8🔵───9🔵
+</pre>
+<hr>
+<p>Atteint [2,6]</p>
+<h3 id="tableau-des-pères-">Tableau des pères : </h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Sommet</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">5</th>
+<th style="text-align:center">6</th>
+<th style="text-align:center">7</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>d</strong></td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">∞</td>
+<td style="text-align:center">∞</td>
+<td style="text-align:center">∞</td>
+<td style="text-align:center">∞</td>
+<td style="text-align:center">∞</td>
+<td style="text-align:center">∞</td>
+<td style="text-align:center">∞</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Sommet</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">5</th>
+<th style="text-align:center">6</th>
+<th style="text-align:center">7</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>p</strong></td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="ii-algorithme-de-dijkstra-">II) Algorithme de Dijkstra : </h3>
+<p>L’<strong>algorithme de Dijkstra</strong> sert à trouver le <strong>plus court chemin</strong> depuis un <strong>sommet de départ</strong> vers <strong>tous les autres sommets</strong> d’un graphe pondéré (sans arêtes négatives).</p>
+<ol>
+<li>On <strong>initialise</strong> les distances : 0 pour le sommet de départ, ∞ pour les autres.</li>
+<li>On <strong>choisit le sommet non traité</strong> avec la plus petite distance actuelle.</li>
+<li>On <strong>met à jour les distances</strong> de ses voisins si un chemin plus court est trouvé.</li>
+<li>On <strong>marque le sommet comme traité</strong> et on recommence jusqu’à ce que tous soient traités (ou que les distances minimales soient connues).</li>
+</ol>
+<hr>
+<h3 id="-graphe-dinitialisation-1">🧩 Graphe d’initialisation </h3>
+<p><strong>Légende</strong> :<br>
+🔵 = Non atteint<br>
+🟢 = Atteint non traité<br>
+🔴 = Traité</p>
+<h3 id="début-">Début : </h3>
+<pre class="language-text">   0🟢───∞🔵───∞🔵───∞🔵
+    │              │     |
+    │              │     |
+    │              │     |
+    ∞🔵──────────∞🔵───∞🔵
+                    
+                    
+                    ∞🔵───∞🔵
+</pre>
+<h3 id="étape-2--1">Étape 2 : </h3>
+<pre class="language-text">   0🔴───1🔴───∞🔵───∞🔵
+    │              │     |
+    │              │     |
+    │              │     |
+    1🔴──────────∞🔵───∞🔵
+                    
+                    
+                    ∞🔵───∞🔵
+</pre>
+<h3 id="étape-3--1">Étape 3 : </h3>
+<pre class="language-text">   0🔴───1🔴───2🔴───∞🔵
+    │              │     |
+    │              │     |
+    │              │     |
+    1🔴──────────2🔴───∞🔵
+                    
+                    
+                    ∞🔵───∞🔵
+</pre>
+<h3 id="étape-4--1">Étape 4 : </h3>
+<pre class="language-text">   0🔴───1🔴───2🔴───3🔴
+    │              │     |
+    │              │     |
+    │              │     |
+    1🔴──────────2🔴───∞🔵
+                    
+                    
+                    ∞🔵───∞🔵
+</pre>
+<hr>
+<h2 id="longueur-minimale">Longueur minimale </h2>
+<blockquote>
+<p>Si l’on cherche le chemin le plus court de <strong>Paris à Marseille</strong>, alors au moment où l’algorithme de Dijkstra détermine la <strong>distance minimale de Paris à Lyon</strong>, cette distance est déjà <strong>optimale et définitive</strong>.</p>
+</blockquote>
+<p>Autrement dit, même si l’algorithme continue ensuite à calculer la distance jusqu’à Marseille ou d’autres villes,<br>
+le <strong>chemin Paris → Lyon</strong> ne changera plus, car il représente déjà la <strong>plus courte distance possible</strong> entre ces deux points.</p>
+<p>Pas de file mais juste une table dépendant de P.<br>
+Distance partiel de S₀ à S selon P.</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>⊆</mo><mi>S</mi></mrow><annotation encoding="application/x-tex">P \subseteq S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.136em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⊆</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span> sommets -&gt; distance partielles de S₀ à S selon P.</p>
+<hr>
+<h3 id="exemples-">Exemples : </h3>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo><mo>=</mo><mi>m</mi><mi>i</mi><mi>n</mi><mo stretchy="false">[</mo><mi>d</mi><mo stretchy="false">(</mo><msub><mi>S</mi><mn>0</mn></msub><mo separator="true">,</mo><mi>r</mi><mo stretchy="false">)</mo><mi mathvariant="normal">∣</mi><mi>r</mi><mo>−</mo><mi>s</mi><mo separator="true">,</mo><mi>e</mi><mi>t</mi><mo separator="true">,</mo><mi>r</mi><mo>∈</mo><mi>P</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp(s)= min [d(S₀,r)| r - s, et, r \in P ]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">min</span><span class="mopen">[</span><span class="mord mathnormal">d</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mclose">)</span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8095em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">e</span><span class="mord mathnormal">t</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mclose">]</span></span></span></span></span></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>min</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi mathvariant="normal">∅</mi><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\min(\varnothing) = \infty</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">min</span><span class="mopen">(</span><span class="mord amsrm">∅</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">∞</span></span></span></span></span></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>m</mi><mi>i</mi><mi>n</mi><mo stretchy="false">[</mo><mn>1</mn><mo separator="true">,</mo><mn>3</mn><mo separator="true">,</mo><mn>5</mn><mo stretchy="false">]</mo><mo stretchy="false">(</mo><mn>7</mn><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">min[1,3,5](7) = ∞</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">min</span><span class="mopen">[</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">3</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">5</span><span class="mclose">]</span><span class="mopen">(</span><span class="mord">7</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">∞</span></span></span></span></span><br>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>m</mi><mi>i</mi><mi>n</mi><mo stretchy="false">[</mo><mn>1</mn><mo separator="true">,</mo><mn>4</mn><mo stretchy="false">]</mo><mo stretchy="false">(</mo><mn>7</mn><mo stretchy="false">)</mo><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">min[1,4](7) = 4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">min</span><span class="mopen">[</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">4</span><span class="mclose">]</span><span class="mopen">(</span><span class="mord">7</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span></span><br>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>d</mi><mo stretchy="false">[</mo><msub><mi>S</mi><mn>0</mn></msub><mo stretchy="false">]</mo><mo stretchy="false">(</mo><msub><mi>S</mi><mn>0</mn></msub><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">d[S₀](S₀) = 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mopen">[</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span></span></p>
+<h3 id="propriété-">Propriété : </h3>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mn>0</mn></msub><mo>∈</mo></mrow><annotation encoding="application/x-tex">S₀ \in</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span></span></span></span>P  et <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>⊂</mo></mrow><annotation encoding="application/x-tex">P \subset</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7224em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⊂</span></span></span></span>S</p>
+<p>Soit <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>∈</mo></mrow><annotation encoding="application/x-tex">s \in</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span></span></span></span>S-P tel que dp(s) &lt;= dp (t) pour tout <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>∈</mo></mrow><annotation encoding="application/x-tex">t \in</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6542em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span></span></span></span>S-P<br>
+Alors dp(s) = d(S₀, s)</p>
+<p><strong>Premier cas</strong> : S non connecté à S₀ : d(S₀,s) &lt;= dp(s) =&gt; dp(s) = ∞</p>
+<p><strong>Cas contraire</strong> : S connecté à S₀</p>
+<h3 id="exemple-">Exemple : </h3>
+<p>P -&gt; P U {s}</p>
+<p>Si t est voisin de s</p>
+<h4 id="si-t-s-">si t-s : </h4>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>d</mi><mi>p</mi><mi>U</mi><mo stretchy="false">[</mo><mi>s</mi><mo stretchy="false">]</mo><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mi>min</mi><mo>⁡</mo><mo stretchy="false">[</mo><mi>d</mi><mi>p</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo separator="true">,</mo><mi>d</mi><mo stretchy="false">(</mo><msub><mi>S</mi><mn>0</mn></msub><mo separator="true">,</mo><mi>S</mi><mo stretchy="false">)</mo><mo>+</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp U [s] (t)= \min [dp(t), d(S₀, S)+1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mopen">[</span><span class="mord mathnormal">s</span><span class="mclose">]</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">min</span><span class="mopen">[</span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span></span></p>
+<h4 id="si-ts-">si t=s : </h4>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>d</mi><mi>p</mi><mi>U</mi><mo stretchy="false">[</mo><mi>s</mi><mo stretchy="false">]</mo><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mi>d</mi><mo stretchy="false">(</mo><msub><mi>S</mi><mn>0</mn></msub><mo separator="true">,</mo><mi>S</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">dp U [s] (t)=d(S₀, S)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mopen">[</span><span class="mord mathnormal">s</span><span class="mclose">]</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mclose">)</span></span></span></span></span></p>
+<h4 id="sinon-">Sinon : </h4>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>d</mi><mi>p</mi><mi>U</mi><mo stretchy="false">[</mo><mi>s</mi><mo stretchy="false">]</mo><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mi>d</mi><mi>p</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">dp U [s] (t)=dp(t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mopen">[</span><span class="mord mathnormal">s</span><span class="mclose">]</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span></span></span></span></span></p>
+<hr>
+<h2 id="algorithme-écrit-en-pseudo-">Algorithme écrit en pseudo : </h2>
+<pre data-role="codeBlock" data-info="PYTHON" class="language-python PYTHON"><code><span class="token keyword keyword-def">def</span> <span class="token function">FonctionDijstra</span><span class="token punctuation">(</span>G<span class="token punctuation">:</span> Graphe<span class="token punctuation">,</span> S₀<span class="token punctuation">:</span> Sommet<span class="token punctuation">)</span><span class="token punctuation">:</span>
+     <span class="token triple-quoted-string string">"""P:sommet -&gt; sommet U {O}
+        d:Sommet -&gt; N U {∞}"""</span>
+
+        <span class="token comment">#initialisation</span>
+        d<span class="token punctuation">[</span>s<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+        p<span class="token punctuation">[</span>S₀<span class="token punctuation">]</span> <span class="token operator">=</span> S₀
+        E <span class="token operator">=</span> <span class="token punctuation">{</span>S₀<span class="token punctuation">}</span>
+
+        <span class="token keyword keyword-for">for</span> sommet s <span class="token keyword keyword-and">and</span> s <span class="token keyword keyword-is">is</span> <span class="token keyword keyword-not">not</span> S₀ <span class="token keyword keyword-in">in</span> Graphe<span class="token punctuation">:</span>
+            d<span class="token punctuation">[</span>s<span class="token punctuation">]</span> <span class="token operator">=</span> ∞
+            p<span class="token punctuation">[</span>s<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+            E <span class="token operator">=</span> E U <span class="token punctuation">{</span>s<span class="token punctuation">}</span>
+        <span class="token comment"># E = S : tous les sommets doivent être traités</span>
+        <span class="token comment"># Traitement</span>
+        <span class="token keyword keyword-while">while</span> E <span class="token keyword keyword-is">is</span> <span class="token keyword keyword-not">not</span> ∅<span class="token punctuation">:</span>
+            <span class="token string">'prendre s dans E tel que d[s] minimal'</span>
+            <span class="token comment"># alors d[s] = d(S₀, S)</span>
+            <span class="token keyword keyword-for">for</span> t<span class="token operator">-</span>s <span class="token keyword keyword-and">and</span> t <span class="token keyword keyword-in">in</span> E<span class="token punctuation">:</span>
+                <span class="token keyword keyword-if">if</span> d<span class="token punctuation">[</span>s<span class="token punctuation">]</span> <span class="token operator">+</span><span class="token number">1</span> <span class="token operator">&lt;</span> d<span class="token punctuation">[</span>t<span class="token punctuation">]</span><span class="token punctuation">:</span>
+                    d<span class="token punctuation">[</span>t<span class="token punctuation">]</span> <span class="token operator">=</span> d<span class="token punctuation">[</span>s<span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">1</span>
+                    p<span class="token punctuation">[</span>t<span class="token punctuation">]</span> <span class="token operator">=</span> S
+            E <span class="token operator">=</span> E <span class="token operator">-</span> <span class="token punctuation">{</span>s<span class="token punctuation">}</span>
+        <span class="token keyword keyword-return">return</span> <span class="token punctuation">(</span>p<span class="token punctuation">,</span>d<span class="token punctuation">)</span>            
+</code></pre><p><strong>Compléxité</strong> : <span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>m</mi><mo>+</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(m+n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></span></p>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+  </body></html>
