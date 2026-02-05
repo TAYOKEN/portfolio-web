@@ -657,3 +657,34 @@
 .close-btn:hover {
     color: var(--accent);
 }
+
+/* Styles pour la modale de redirection */
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.modal-actions button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: opacity 0.3s;
+}
+
+.btn-cancel {
+    background-color: #eee;
+    color: #333;
+}
+
+.btn-confirm {
+    background-color: var(--secondary);
+    color: white;
+}
+
+.modal-actions button:hover {
+    opacity: 0.8;
+}
