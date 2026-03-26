@@ -8,6 +8,93 @@
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
     <link href="css/indexstyle.css" rel="stylesheet">
     <title>Yanis BOUKAYOUH - Portfolio</title>
+    
+    <style>
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 20px; 
+            padding: 20px 0;
+            width: 100%;
+        }
+        .skill-block {
+            padding: 60px 20px; 
+            min-height: 150px; 
+            border-radius: 8px;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.5rem; 
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .skill-block:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+        .skill-modal-content {
+            max-width: 650px; /* Modale plus large pour accueillir l'image plus grande */
+        }
+        .skill-modal-body {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-top: 15px;
+        }
+        .skill-modal-img {
+            flex: 0 0 180px; /* Taille du bloc image agrandie (avant 100px) */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 15px; /* Un peu plus de padding */
+        }
+        .skill-modal-img img {
+            max-width: 100%;
+            max-height: 180px; /* Image elle-même plus grande (avant 100px) */
+            object-fit: contain;
+        }
+        .skill-modal-text {
+            flex: 1;
+            text-align: left;
+        }
+        .skill-modal-text h3 {
+            margin-top: 0;
+            color: var(--primary, #333); 
+            margin-bottom: 10px;
+        }
+        /* Style pour la liste à puces de la description */
+        .skill-modal-text ul {
+            margin: 0;
+            padding-left: 20px;
+            line-height: 1.5;
+        }
+        .skill-modal-text li {
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            .skill-modal-body {
+                flex-direction: column;
+                text-align: center;
+            }
+            .skill-modal-img {
+                flex: 0 0 auto;
+                width: 100%; /* S'adapte à la largeur sur mobile */
+            }
+            .skill-modal-text {
+                text-align: left; /* Garde le texte aligné à gauche pour les listes à puces */
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -100,26 +187,42 @@
             </div>
         </section>
 
-        <section class="skills-section hidden">
-            <h2 class="section-title">Mes Compétences</h2>
-            <div class="skills-carousel">
-                <div class="carousel-container">
-                    <div class="carousel-track">
-                        <div class="skill-card"><img src="Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/html5-original.svg" alt="HTML5"><h3>HTML5</h3></div>
-                        <div class="skill-card"><img src="Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/css3-original.svg" alt="CSS3"><h3>CSS3</h3></div>
-                        <div class="skill-card"><img src="Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/python-original.svg" alt="Python"><h3>Python</h3></div>
-                        <div class="skill-card"><img src="Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/c-plain.svg" alt="C"><h3>C</h3></div>
-                        <div class="skill-card"><img src="Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/php-original.svg" alt="PHP"><h3>PHP</h3></div>
-                        <div class="skill-card"><img src="Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/java-original.svg" alt="Java"><h3>Java</h3></div>
-                        <div class="skill-card"><img src="Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/mysql-original.svg" alt="SQL"><h3>SQL</h3></div>
-                        <div class="skill-card"><img src="Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/linux-plain.svg" alt="Linux"><h3>Linux</h3></div>
-                        <div class="skill-card"><img src="Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/arduino-original.svg" alt="Arduino"><h3>Arduino</h3></div>
-                    </div>
-                </div>
-                <button class="carousel-btn prev-btn">&lt;</button>
-                <button class="carousel-btn next-btn">&gt;</button>
-            </div>
-        </section>
+<section class="skills-section hidden">
+    <h2 class="section-title">Mes Compétences</h2>
+    <div class="skills-grid">
+        
+        <div class="skill-block" style="background: linear-gradient(135deg, #ff416c, #ff4b2b);" 
+             onclick="openSkillModal('Réaliser', '<ul><li>Élaborer une application informatique</li><li>Faire évoluer une application informatique</li><li>Maintenir en conditions opérationnelles</li></ul><p><strong>Projet Java :</strong> Développement d’un logiciel de traitement d’image par <strong>pipelining</strong>. Manipulation directe des données binaires (pixels) pour optimiser la compression tout en préservant la fidélité visuelle de l’œuvre originale.</p>', 'Yanis BOUKAYOUH - Portfolio_fichiers/2.png')">
+            Réaliser
+        </div>
+        
+        <div class="skill-block" style="background: linear-gradient(135deg, #00b4db, #0083b0);" 
+             onclick="openSkillModal('Optimiser', '<ul><li>Améliorer les performances des programmes</li><li>Limiter l’impact environnemental</li><li>Mettre en place des solutions adaptées</li></ul><p><strong>Projet Briques (Langage C) :</strong> Conception d’un algorithme de génération de structures de données optimisé. Focus sur la réduction de la complexité temporelle et l’efficacité mémoire pour une intégration fluide en environnement contraint.</p>', 'https://media.discordapp.net/attachments/1426195627133370490/1482027831025336504/image-17.png?ex=69c5f039&is=69c49eb9&hm=12217a615dc1b1b5ae9faa6000342238f6c13fc9a9494c10d44549edcaaccb9c&=&format=webp&quality=lossless&width=876&height=930')">
+            Optimiser
+        </div>
+        
+        <div class="skill-block" style="background: linear-gradient(135deg, #8e2de2, #4a00e0);" 
+             onclick="openSkillModal('Administrer', '<ul><li>Déployer une nouvelle architecture technique</li><li>Améliorer une infrastructure existante</li><li>Sécuriser les applications et les services</li></ul><p><strong>Projet Réseaux & DualBoot :</strong> Mise en place et configuration d’infrastructures réseaux sécurisées. Apprentissage de la gestion des systèmes d’exploitation et des protocoles de protection des flux de données.</p>', 'https://cms-informatic.com/wp-content/uploads/2020/11/reseaux-informatiques.png')">
+            Administrer
+        </div>
+        
+        <div class="skill-block" style="background: linear-gradient(135deg, #11998e, #38ef7d);" 
+             onclick="openSkillModal('Gérer', '<ul><li>Lancer un nouveau projet</li><li>Sécuriser des données confidentielles</li><li>Exploiter des données pour la décision</li></ul><p><strong>Projet img2brick :</strong> Mise en conformité <strong>RGPD</strong> d’une application web. Implémentation de mesures de sécurité critiques : hachage de mots de passe et protection contre les injections SQL pour garantir l’intégrité du système.</p>', 'https://media.discordapp.net/attachments/1247637899743199273/1435942531178430565/image.png?ex=69c65f31&is=69c50db1&hm=84f1ccfd9eb3f6b226f72f8fd76e6fb17eb431b3c2c7a41bef7788c79682937a&=&format=webp&quality=lossless&width=688&height=388')">
+            Gérer
+        </div>
+        
+        <div class="skill-block" style="background: linear-gradient(135deg, #f7971e, #ffd200);" 
+             onclick="openSkillModal('Conduire', '<ul><li>Lancer et piloter un projet</li><li>Maintenir en condition opérationnelle</li><li>Faire évoluer un système d’information</li></ul><p><strong>Application Bancaire :</strong> Pilotage de projet via la <strong>méthode Agile</strong>. Gestion du product backlog, planification par diagramme de Gantt et coordination des tâches pour respecter les jalons de livraison client.</p>', 'https://cdn.discordapp.net/attachments/1462822867560562719/1485955077582749786/image.png?ex=69c66202&is=69c51082&hm=bf573c46c6e9f0f5b66b20f5c112b0f264413d69d77318da33bc4e897294a77d')">
+            Conduire
+        </div>
+        
+        <div class="skill-block" style="background: linear-gradient(135deg, #fc466b, #3f5efb);" 
+             onclick="openSkillModal('Collaborer', '<ul><li>Organiser le travail en équipe</li><li>Gérer et transmettre l’information</li><li>Adapter la solution aux besoins externes</li></ul><p><strong>UNESCO Project :</strong> Coordination d’équipe sur un projet annuel. Réalisation de benchmarking et mise aux normes d’accessibilité (PMR). Gestion proactive des défis humains et organisationnels pour assurer la réussite collective.</p>', 'Yanis%20BOUKAYOUH%20-%20Portfolio_fichiers/1_002.png')">
+            Collaborer
+        </div>
+    
+    </div>
+</section>
 
         <h2 class="section-title hidden">Projets Académiques</h2>
         <section class="projects-grid">
@@ -260,6 +363,21 @@
             </div>
         </div>
 
+        <div id="skill-modal" class="modal-overlay" style="display: none;">
+            <div class="modal-content skill-modal-content">
+                <span class="close-btn" onclick="closeSkillModal()">&times;</span>
+                <div class="skill-modal-body">
+                    <div class="skill-modal-img">
+                        <img id="skill-modal-image" src="" alt="Skill Logo">
+                    </div>
+                    <div class="skill-modal-text">
+                        <h3 id="skill-modal-title">Titre Compétence</h3>
+                        <p id="skill-modal-desc">Description de la compétence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <footer class="hidden">
@@ -297,6 +415,27 @@
 
         function closeRedirectModal() {
             document.getElementById('redirect-modal').style.display = 'none';
+        }
+
+        /* NOUVELLES FONCTIONS JS POUR LA MODALE DES COMPÉTENCES */
+        function openSkillModal(title, description, imageSrc) {
+            document.getElementById('skill-modal-title').textContent = title;
+            // Utilisation de innerHTML à la place de textContent pour interpréter les <ul> et <li>
+            document.getElementById('skill-modal-desc').innerHTML = description;
+            document.getElementById('skill-modal-image').src = imageSrc;
+            document.getElementById('skill-modal').style.display = 'flex';
+        }
+
+        function closeSkillModal() {
+            document.getElementById('skill-modal').style.display = 'none';
+        }
+        
+        // Fermer la modale si l'utilisateur clique en dehors du contenu
+        window.onclick = function(event) {
+            const skillModal = document.getElementById('skill-modal');
+            if (event.target == skillModal) {
+                closeSkillModal();
+            }
         }
     </script>
 </body>
