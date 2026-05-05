@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOP 8 MAKER FALOTIER CUP</title>
+    <! -- bibliothèque pour gérer le canvas mini editeur d'image en bref-- >
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js"></script> 
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="shortcut icon" href="favicon.ico" />
+</head>
+<body>
+
+    <div class="sidebar">
+        <h2>Paramètres Globaux</h2>
+        <label>Image de fond (Upload)</label>
+        <input type="file" id="bg-upload" accept="image/*">
+        
+        <label>Nom du Tournoi</label>
+        <input type="text" id="in-tournoi" value="FALOTIER CUP MONTHLY #2" oninput="updateText('text-tournoi', this.value)">
+        
+        <label>Date</label>
+        <input type="text" id="in-date" value="21 AVRIL" oninput="updateText('text-date', this.value)">
+        
+        <label>Nombre de Joueurs</label>
+        <input type="text" id="in-joueurs" value="6 JOUEURS" oninput="updateText('text-joueurs', this.value)">
+
+        <button class="btn-download" id="dl-button" onclick="downloadImage()">Télécharger le Top 8</button>
+
+        <h2>Joueurs (Top 8)</h2>
+        <div id="players-forms"></div>
+    </div>
+
+    <div class="preview-area">
+        <div class="canvas-container" id="capture-zone" style="background-image: url('background.jpg');">
+            <div class="global-text" id="text-tournoi">FALOTIER CUP MONTHLY #2</div>
+            <div class="global-text" id="text-date">21 AVRIL</div>
+            <div class="global-text" id="text-joueurs">6 JOUEURS</div>
+            <div id="players-canvas"></div>
+        </div>
+    </div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
