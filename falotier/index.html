@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TOP 8 MAKER FALOTIER CUP</title>
-    <! -- bibliothèque pour gérer le canvas mini editeur d'image en bref-- >
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js"></script> 
-   <link rel="stylesheet" href="css/style.css">
-   <link rel="shortcut icon" href="favicon.ico" />
+    <!-- bibliothèque pour gérer le canvas mini editeur d'image -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="favicon.ico" />
 </head>
 <body>
-
     <div class="sidebar">
+        <h2>Palette (Pipette)</h2>
+        <label>Image de référence (non affichée sur le rendu final)</label>
+        <input type="file" id="palette-upload" accept="image/*">
+        <img id="palette-preview" style="width: 100%; height: auto; display: none; margin-top: 10px; border: 1px dashed #555; cursor: crosshair;" title="Cliquez ici avec la pipette !">
+
         <h2>Paramètres Globaux</h2>
         <label>Image de fond (Upload)</label>
         <input type="file" id="bg-upload" accept="image/*">
@@ -24,6 +28,36 @@
         
         <label>Nombre de Joueurs</label>
         <input type="text" id="in-joueurs" value="6 JOUEURS" oninput="updateText('text-joueurs', this.value)">
+
+        <label>Couleur du Fond de Case</label>
+        <div class="color-row">
+            <input type="color" id="in-bg-color" value="#244059" oninput="updateCardColors()">
+            <button type="button" class="btn-eyedropper" onclick="pickColor('in-bg-color', this)" title="Pipette">🖌</button>
+        </div>
+
+        <label>Couleur des Bordures</label>
+        <div class="color-row">
+            <input type="color" id="in-border-color" value="#66c2f5" oninput="updateCardColors()">
+            <button type="button" class="btn-eyedropper" onclick="pickColor('in-border-color', this)" title="Pipette">🖌</button>
+        </div>
+
+        <label>Couleur Nom / Réseaux Sociaux</label>
+        <div class="color-row">
+            <input type="color" id="in-info-color" value="#33718f" oninput="updateCardColors()">
+            <button type="button" class="btn-eyedropper" onclick="pickColor('in-info-color', this)" title="Pipette">🖌</button>
+        </div>
+
+        <label>Couleur Texte Rang (#1)</label>
+        <div class="color-row">
+            <input type="color" id="in-rank-color" value="#ffffff" oninput="updateCardColors()">
+            <button type="button" class="btn-eyedropper" onclick="pickColor('in-rank-color', this)" title="Pipette">🖌</button>
+        </div>
+
+        <label>Couleur Ombre Rang (#1)</label>
+        <div class="color-row">
+            <input type="color" id="in-rank-shadow" value="#000000" oninput="updateCardColors()">
+            <button type="button" class="btn-eyedropper" onclick="pickColor('in-rank-shadow', this)" title="Pipette">🖌</button>
+        </div>
 
         <button class="btn-download" id="dl-button" onclick="downloadImage()">Télécharger le Top 8</button>
 
@@ -39,6 +73,8 @@
             <div id="players-canvas"></div>
         </div>
     </div>
+
+    <div id="eyedropper-preview"></div>
 
 <script src="js/script.js"></script>
 </body>
