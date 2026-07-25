@@ -1,276 +1,138 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html class="dark" lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TAYOKEN - Portfolio</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="fontstylesheet">
-    <link href="css/style.css" rel="stylesheet">
-
-</head>
-<body>
-    <div class="bg-animation"></div>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>TAYOKEN</title>
     
-    <header>
-        <nav>
-            <div class="logo">TAYOKEN</div>
-            <ul class="nav-links">
-                <li><a href="#home">Accueil</a></li>
-                <li><a href="#social">Réseaux</a></li>
-                <li><a href="#projects">Projets</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section id="home" class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <h1>TAYOKEN</h1>
-                    <p class="subtitle">Étudiant en Informatique</p>
-                    <p class="description">
-                        Passionné par le développement et l'apprentissage constant. 
-                        Spécialisé en Java, C, Lua, Python et PHP. 
-                        Créateur de solutions innovantes et projets créatifs.
-                    </p>
-                    <div class="cta-buttons">
-                        <a href="#projects" class="btn btn-primary">
-                            <i class="fas fa-code"></i>
-                            Voir mes projets
-                        </a>
-                        <a href="https://github.com/TAYOKEN" class="btn btn-secondary" target="_blank">
-                            <i class="fab fa-github"></i>
-                            GitHub
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="social" class="social-media">
-            <div class="container">
-                <div class="section-title fade-in">
-                    <h2>Mes Réseaux Sociaux</h2>
-                    <p>Suivez-moi sur mes différentes plateformes</p>
-                </div>
-                
-                <div class="social-grid">
-                    <!-- Twitter/X Card -->
-                    <div class="social-card fade-in">
-                        <div class="social-header">
-                            <div class="social-icon twitter">
-                                <i class="fab fa-x-twitter"></i>
-                            </div>
-                            <div class="social-info">
-                                <h3>X (Twitter)</h3>
-                                <p class="social-handle">@tayoken_ytd</p>
-                            </div>
-                        </div>
-                        <div class="social-content">
-                            <p>Suivez mes dernières actualités et découvertes en développement</p>
-                        </div>
-                        <a href="https://x.com/tayoken_ytd" class="social-link" target="_blank">
-                            <i class="fas fa-external-link-alt"></i>
-                            Suivre sur X
-                        </a>
-                    </div>
-
-                    <!-- Instagram Card -->
-                    <div class="social-card fade-in">
-                        <div class="social-header">
-                            <div class="social-icon instagram">
-                                <i class="fab fa-instagram"></i>
-                            </div>
-                            <div class="social-info">
-                                <h3>Instagram</h3>
-                                <p class="social-handle">@tayoken_ytd</p>
-                            </div>
-                        </div>
-                        <div class="social-content">
-                            <p>Découvrez mon quotidien et mes projets en cours</p>
-                        </div>
-                        <a href="https://www.instagram.com/tayoken_ytd/" class="social-link" target="_blank">
-                            <i class="fas fa-external-link-alt"></i>
-                            Suivre sur Instagram
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" class="projects">
-            <div class="container">
-                <div class="section-title fade-in">
-                    <h2>Mes Projets</h2>
-                    <p>Découvrez une sélection de mes travaux et créations</p>
-                </div>
-                
-                <div class="projects-grid">
-                    <div class="project-card fade-in">
-                        <div class="project-header">
-                            <div class="project-icon">
-                                <i class="fab fa-discord"></i>
-                            </div>
-                            <div class="project-info">
-                                <h3>Kyoka Bot</h3>
-                                <span class="project-lang">Python</span>
-                            </div>
-                        </div>
-                        <p class="project-description">
-                            Bot Discord polyvalent conçu pour noter et évaluer les fichiers partagés. 
-                            Intègre des fonctionnalités avancées de modération et d'interaction communautaire.
-                        </p>
-                        <div class="project-links">
-                            <a href="https://github.com/TAYOKEN/Kyoka" class="project-link" target="_blank">
-                                <i class="fab fa-github"></i>
-                                Code
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="project-card fade-in">
-                        <div class="project-header">
-                            <div class="project-icon">
-                                <i class="fas fa-gamepad"></i>
-                            </div>
-                            <div class="project-info">
-                                <h3>Tetris</h3>
-                                <span class="project-lang">Python</span>
-                            </div>
-                        </div>
-                        <p class="project-description">
-                           Projet Academique comportant, l'implémentation moderne du classique jeu Tetris avec une interface graphique intuitive.
-                        </p>
-                        <div class="project-links">
-                            <a href="https://github.com/TAYOKEN/tetris" class="project-link" target="_blank">
-                                <i class="fab fa-github"></i>
-                                Code
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="project-card fade-in">
-                        <div class="project-header">
-                            <div class="project-icon">
-                                <i class="fas fa-dice"></i>
-                            </div>
-                            <div class="project-info">
-                                <h3>YAMS Java</h3>
-                                <span class="project-lang">Java / HTML</span>
-                            </div>
-                        </div>
-                        <p class="project-description">
-                            Projet SAE de BUT Informatique - Implémentation du jeu de dés YAMS avec interface et logique de jeu complète. [Projet Academique]
-                        </p>
-                        <div class="project-links">
-                            <a href="https://github.com/Issam-BH/YAMS_JAVA" class="project-link" target="_blank">
-                                <i class="fab fa-github"></i>
-                                Code
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="project-card fade-in">
-                        <div class="project-header">
-                            <div class="project-icon">
-                                <i class="fas fa-database"></i>
-                            </div>
-                            <div class="project-info">
-                                <h3>SAE Base de Données</h3>
-                                <span class="project-lang">PHP</span>
-                            </div>
-                        </div>
-                        <p class="project-description">
-                            Projet academique, Postgres / PHP comportant à la création d'un site web de gestion de vétérinaire.
-                        </p>
-                        <div class="project-links">
-                            <a href="https://github.com/TAYOKEN/Sae_BDD" class="project-link" target="_blank">
-                                <i class="fab fa-github"></i>
-                                Code
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="project-card fade-in">
-                        <div class="project-header">
-                            <div class="project-icon">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <div class="project-info">
-                                <h3>SilvEterna</h3>
-                                <span class="project-lang">PHP</span>
-                            </div>
-                        </div>
-                        <p class="project-description">
-                            Projet Academique comportant à la création d'un réseau social pour sénior. Fait en PHP / PostgresSQL.
-                        </p>
-                        <div class="project-links">
-                            <a href="https://github.com/yevhen-kefa/SilvEterna" class="project-link" target="_blank">
-                                <i class="fab fa-github"></i>
-                                Code
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="project-card fade-in">
-                        <div class="project-header">
-                            <div class="project-icon">
-                                <i class="fas fa-dragon"></i>
-                            </div>
-                            <div class="project-info">
-                                <h3>Dokkan Event Maker Website</h3>
-                                <span class="project-lang">HTML / CSS / JS / PHP / SQLite</span>
-                            </div>
-                        </div>
-                        <p class="project-description">
-                            Site Web Permettant de créer des requetes SQL et fichier JSON, pour modder le jeu DBZ Dokkan Battle
-                        </p>
-                        <div class="project-links">
-                            <a href="https://eventmaker.ct.ws/" class="project-link" target="_blank">
-                                <i class="fab fa-github"></i>
-                                Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="contact">
-            <div class="container">
-                <div class="contact-content fade-in">
-                    <h2>Restons en Contact</h2>
-                    <p>N'hésitez pas à me contacter pour discuter de projets, collaborations ou simplement échanger !</p>
-                    
-                    <div class="contact-links">
-                        <a href="mailto:contact@tayoken.xyz" class="contact-link">
-                            <i class="fas fa-envelope"></i>
-                            contact@tayoken.xyz
-                        </a>
-                        <a href="https://github.com/TAYOKEN" class="contact-link" target="_blank">
-                            <i class="fab fa-github"></i>
-                            GitHub
-                        </a>
-                        <a href="https://tayoken.xyz/" class="contact-link" target="_blank">
-                            <i class="fas fa-globe"></i>
-                            tayoken.xyz
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 TAYOKEN.</p>
-        </div>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@700;800&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary": "#adc6ff",
+                        "background": "#081425",
+                        "surface": "#081425",
+                        "on-surface": "#f1f5f9",
+                        "on-surface-variant": "#94a3b8",
+                        "surface-dim": "#081425",
+                    },
+                    spacing: {
+                        "gutter": "24px",
+                        "stack-lg": "32px",
+                        "margin-mobile": "24px",
+                        "container-max": "900px"
+                    },
+                    fontFamily: {
+                        "headline-xl-mobile": ["Hanken Grotesk"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-caps": ["JetBrains Mono"]
+                    },
+                    fontSize: {
+                        "headline-xl-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "300"}],
+                        "body-md": ["15px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["11px", {"lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+    
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #081425;
+            color: #f1f5f9;
+        }
+        .thin-border {
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .subtle-hover:hover {
+            border-color: rgba(173, 198, 255, 0.2);
+            background: rgba(255, 255, 255, 0.02);
+        }
         
-    </footer>
+        /* ICI : MODIFIE L'URL POUR CHANGER LA BANNIÈRE (IMAGE DE FOND) */
+        .bg-custom {
+            background-image: url('https://pbs.twimg.com/media/HIDr_Y9bMAA_01R?format=jpg&name=medium'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
 
- <script src="js/script.js"></script> 
+<body class="font-body-md text-body-md antialiased min-h-screen bg-custom flex items-center justify-center py-12 md:py-24">
+    
+    <main class="max-w-container-max w-full mx-auto px-margin-mobile md:px-gutter">
+        <div class="bg-surface-dim/80 backdrop-blur-xl thin-border p-8 md:p-16 shadow-2xl space-y-16 rounded">
+            
+            <section class="flex flex-col items-center text-center gap-stack-lg">
+                <div class="relative w-28 h-28 rounded-full p-[1px] bg-gradient-to-b from-white/20 to-transparent">
+                    <div class="w-full h-full rounded-full overflow-hidden border border-background">
+                        <img alt="Photo de profil" class="w-full h-full object-cover" src="https://pbs.twimg.com/profile_images/2069898229991219200/6ng9aZyL_400x400.jpg" />
+                    </div>
+                </div>
+                
+                <div class="space-y-4">
+                    <h1 class="font-headline-xl-mobile text-headline-xl-mobile md:font-headline-xl md:text-headline-xl">
+                        TAYOKEN
+                    </h1>
+                    <p class="font-body-lg text-on-surface-variant max-w-lg mx-auto">
+                        Chui pas dev mais azz frr
+                    </p>
+                </div>
+                
+                <div class="flex items-center gap-8 pt-4">
+                    <a class="text-on-surface/40 hover:text-secondary transition-colors" href="https://x.com/tayoken_ytd" target="_blank" title="Twitter / X">
+                        <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    
+                    <a class="text-on-surface/40 hover:text-secondary transition-colors" href="https://github.com/TAYOKEN" target="_blank" title="GitHub">
+                        <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                        </svg>
+                    </a>
+                </div>
+            </section>
+            
+            <section class="space-y-8">
+                <div class="flex items-center gap-4">
+                    <h2 class="font-label-caps text-label-caps text-on-surface/30 uppercase shrink-0">Pages</h2>
+                    <div class="h-[1px] w-full bg-white/5"></div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    
+                    <a class="group thin-border bg-white/[0.02] p-6 flex flex-col gap-4 subtle-hover transition-all duration-300 rounded" href="falotier/index.html">
+                        <div class="w-12 h-12 flex items-center justify-center rounded border border-white/5 bg-white/[0.02] text-on-surface/30 group-hover:text-secondary group-hover:border-secondary/20 transition-colors shrink-0">
+                            <span class="material-symbols-outlined">bar_chart</span>
+                        </div>
+                        <div>
+                            <h3 class="font-headline-lg text-[18px] text-on-surface mb-1">Custom TOP 8 Graph</h3>
+                            <p class="text-on-surface-variant text-sm">Générateur de graphiques personnalisé.</p>
+                        </div>
+                    </a>
 
+                </div>
+            </section>
+            
+        </div>
+    </main>
+    
 </body>
 </html>
